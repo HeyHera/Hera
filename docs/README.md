@@ -1,4 +1,4 @@
-# Hera
+# Hera - An Operating System Level Voice Recognition Package
 Our project propose a new way of interacting with the operating system that prioritizes on improving the user experience via voice commands. It is able to recognize the spoken language and is able to draw meaningful conclusions from it and to provide responses accordingly.
 
 ## Introduction
