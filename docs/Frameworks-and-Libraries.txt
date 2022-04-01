@@ -1,2 +1,4 @@
 venv - https://docs.python.org/3/library/venv.html
 Vosk - https://alphacephei.com/vosk/, https://github.com/alphacep/vosk-api
+pip install sounddevice
+sudo apt install ffmpeg
