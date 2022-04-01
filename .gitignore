@@ -1,1 +1,3 @@
 env/
+speech-recognition/vosk-api/python/example/model/
+speech-recognition/vosk-api/python/example/test-inputs/
