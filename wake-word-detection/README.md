@@ -1,15 +1,21 @@
-Setting up virtual environment
+### Setting up virtual environment
 ```
 sudo apt install python3-venv
+```
+```
 python3 -m venv Hera
+```
 
 ### Installing dependencies
 ```
 python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
 ```
+```
 python -m pip install  numpy scipy matplotlib ipython jupyter pandas sympy
-
+```
+```
 pip install librosa
+```
 
 ### Installing tensorflow  
 ```
