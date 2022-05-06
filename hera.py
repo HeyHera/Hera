@@ -37,15 +37,10 @@ def listener():
         sd.wait()
         mfcc = librosa.feature.mfcc(y=myrecording.ravel(), sr=fs, n_mfcc=40)
         mfcc_processed = np.mean(mfcc.T, axis=0)
-        prediction_thread(mfcc_processed)
+        prediction(mfcc_processed)
         time.sleep(0.001)
 
 
-def voice_thread():
-    listen_thread = threading.Thread(target=listener, name="ListeningFunction")
-    listen_thread.start()
-
-##### PREDICTION THREAD #############
 def prediction(y):
     prediction = model.predict(np.expand_dims(y, axis=0))
     if prediction[:, 1] > 0.98:
@@ -53,7 +48,9 @@ def prediction(y):
         print("---Speech Recognition Initialized--")
         try:
             foo.asr()
+
             print("called ASR")
+            pred_thread.join()
         except Exception as e:
             print("Couldnt call",e)
         # if engine._inLoop:
@@ -64,8 +61,4 @@ def prediction(y):
 
     time.sleep(0.1)
 
-def prediction_thread(y):
-    pred_thread = threading.Thread(target=prediction, name="PredictFunction", args=(y,))
-    pred_thread.start()
-
-voice_thread()
+listener()
