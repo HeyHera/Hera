@@ -8,6 +8,10 @@ from tensorflow.keras.models import load_model
 import pyttsx3
 import os
 
+from importlib.machinery import SourceFileLoader
+foo= SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
+
+
 #### SETTING UP TEXT TO SPEECH ###
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -23,7 +27,7 @@ def speak(audio):
 fs = 22050
 seconds = 2
 
-model = load_model("./saved_model/WWD.h5")
+model = load_model("./wake-word-detection/saved_model/WWD.h5")
 
 ##### LISTENING THREAD #########
 def listener():
@@ -47,6 +51,11 @@ def prediction(y):
     if prediction[:, 1] > 0.98:
         print("---Wake word detected---")
         print("---Speech Recognition Initialized--")
+        try:
+            foo.asr()
+            print("called ASR")
+        except Exception as e:
+            print("Couldnt call",e)
         # if engine._inLoop:
         #     engine.endLoop()
 
