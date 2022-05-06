@@ -18,7 +18,8 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
     engine.endLoop()
-   
+   #os.system(espeak(audio))
+
 ##### CONSTANTS ################
 fs = 22050
 seconds = 2
@@ -44,13 +45,12 @@ def voice_thread():
 ##### PREDICTION THREAD #############
 def prediction(y):
     prediction = model.predict(np.expand_dims(y, axis=0))
-    if prediction[:, 1] > 0.98:
+    if prediction[:, 1] > 0.96:
         print("---Wake word detected---")
-        print("---Speech Recognition Initialized--")
-        # if engine._inLoop:
-        #     engine.endLoop()
+        if engine._inLoop:
+            engine.endLoop()
 
-        # speak("Hello, What can I do for you?")
+        speak("Hello, What can I do for you?")
             
 
     time.sleep(0.1)
