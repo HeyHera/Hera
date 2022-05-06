@@ -1,3 +1,4 @@
 env/
 speech-recognition/vosk-api/*
 speech-recognition/vosk-models/*
+**/__pycache__/
