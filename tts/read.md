@@ -1,10 +1,6 @@
-Package Used
+Method:
 
-1. Speech recognition
-2. pyttsx3
-3. wikipedia
-4. Web browser 
-5. Subprocess
-6. Json
-7. request
-8. wolfram alpha 
+1. # initialize Text-to-speech engine
+2. # convert this text to speech
+3. # checking voices
+4. # setting voice
