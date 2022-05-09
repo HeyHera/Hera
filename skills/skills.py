@@ -55,11 +55,11 @@ def music_playback(command):
                     song_file = str(song)
                     search_success = 1
                     break
-    if search_success == 0:
+    if search_success == 0 and random_flag != 1:
         return("Sorry! I couldn't find the requested song")
     else:
-        song_title = song_file.split(".")[0].split(" - ")[0].title()
-        artist_name = song_file.split(".")[0].split(" - ")[1].title()
+        # song_title = song_file.split(".")[0].split(" - ")[0].title()
+        # artist_name = song_file.split(".")[0].split(" - ")[1].title()
         vlc_path = "/usr/bin/vlc"
         try:
             subprocess.call([vlc_path, str(exp_user_path) +
@@ -110,6 +110,7 @@ def launch_applications(command):
 
 
 if __name__ == '__main__':
-    spoken = launch_applications("Open terminal")
-    # spoken = music_playback("Play the song In the end")
+    # spoken = launch_applications("Open terminal")
+    spoken = music_playback("Play any song")
+    # spoken = music_playback("Play the song in the end")
     print(spoken)
