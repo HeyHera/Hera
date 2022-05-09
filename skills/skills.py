@@ -2,12 +2,25 @@
 # COMMAND LIKE: "Play the song Magic by Coldplay"
 
 import os
+import subprocess
+import yaml
+
+os_username = os.getlogin()
 
 
 def music_playback(command):
     command = str(command).lower()
     music_list = []
-    file_list = os.listdir(GV.pathDelimiter+"Music")
+    try:
+        with open('configs/'+os_username+'.yaml', 'r') as config_file:
+            yaml_load = yaml.safe_load(config_file)
+    except yaml.YAMLError as exc:
+        print(exc)
+        exit()
+
+    exp_user_path = os.path.expanduser(yaml_load['Directories']['Music'])
+    file_list = os.listdir(exp_user_path)
+
     for file in file_list:
         if file.endswith(".mp3") or file.endswith(".wav") or file.endswith(".flac"):
             music_list.append(file)
@@ -17,9 +30,7 @@ def music_playback(command):
     elif "play song" in command:
         song_details = command.split("play song")[1].strip()
     if song_details == "":
-        gtts_text = "Please specify the song"
-        gtts(text=gtts_text)
-        return
+        return("Please specify the song")
     search_success = 0
     song_file = ""
     if "by" in song_details:
@@ -37,18 +48,17 @@ def music_playback(command):
                 search_success = 1
                 break
     if search_success == 0:
-        gtts_text = "Sorry! I couldn't find the requested song"
-        gtts(text=gtts_text)
+        return("Sorry! I couldn't find the requested song")
     else:
         song_title = song_file.split(".")[0].split(" - ")[0].title()
         artist_name = song_file.split(".")[0].split(" - ")[1].title()
-        gtts_text = "Playing " + song_title + " by " + \
-            artist_name + " via VLC media player"
-        gtts(text=gtts_text)
         vlc_path = "/usr/bin/vlc"
         try:
-            subprocess.call([vlc_path, GV.pathDelimiter+"Music/"+song_file], stdout=GV.stdout_dump,
-                            stderr=subprocess.STDOUT)
+            subprocess.call([vlc_path, str(exp_user_path) +
+                            "/"+song_file], stderr=subprocess.STDOUT)
         except:
-            gtts_text = "Sorry! An error encountered"
-            gtts(text=gtts_text)
+            return("Sorry! An error encountered")
+
+
+if __name__ == '__main__':
+    spoken = music_playback("Play the song Faded")
