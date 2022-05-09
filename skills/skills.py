@@ -4,6 +4,7 @@
 import os
 import subprocess
 import yaml
+import random
 
 os_username = os.getlogin()
 
@@ -19,8 +20,9 @@ def music_playback(command):
         exit()
 
     exp_user_path = os.path.expanduser(yaml_load['Directories']['Music'])
+    print(exp_user_path)
     file_list = os.listdir(exp_user_path)
-
+    song_file = ""
     for file in file_list:
         if file.endswith(".mp3") or file.endswith(".wav") or file.endswith(".flac"):
             music_list.append(file)
@@ -29,26 +31,29 @@ def music_playback(command):
         song_details = command.split("play the song")[1].strip()
     elif "play song" in command:
         song_details = command.split("play song")[1].strip()
-    if song_details == "":
-        return("Please specify the song")
-    search_success = 0
-    song_file = ""
-    if "by" in song_details:
-        song_title = song_details.split("by")[0].strip()
-        artist_name = song_details.split("by")[1].strip()
-        for song in music_list:
-            if song_title in str(song).lower() and artist_name in str(song).lower():
-                song_file = str(song)
-                search_success = 1
-                break
+    elif "play any song" or "play a song" in command:
+        song_file = music_list[random.randint(0, len(music_list)-1)]
+        random_flag = 1
     else:
-        for song in music_list:
-            if song_details in str(song).lower():
-                song_file = str(song)
-                search_success = 1
-                break
-    if search_success == 0:
-        return("Sorry! I couldn't find the requested song")
+        return("Please specify the song")
+    if random_flag != 1:
+        search_success = 0
+        if "by" in song_details:
+            song_title = song_details.split("by")[0].strip()
+            artist_name = song_details.split("by")[1].strip()
+            for song in music_list:
+                if song_title in str(song).lower() and artist_name in str(song).lower():
+                    song_file = str(song)
+                    search_success = 1
+                    break
+        else:
+            for song in music_list:
+                if song_details in str(song).lower():
+                    song_file = str(song)
+                    search_success = 1
+                    break
+        if search_success == 0:
+            return("Sorry! I couldn't find the requested song")
     else:
         song_title = song_file.split(".")[0].split(" - ")[0].title()
         artist_name = song_file.split(".")[0].split(" - ")[1].title()
@@ -61,4 +66,4 @@ def music_playback(command):
 
 
 if __name__ == '__main__':
-    spoken = music_playback("Play the song Faded")
+    spoken = music_playback("Play any song")
