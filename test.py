@@ -1,3 +1,4 @@
-import random
-rand = random.randint(0, 4)
-print(rand)
+import webbrowser
+
+
+webbrowser.open_new_tab("youtube.com")

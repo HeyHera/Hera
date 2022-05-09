@@ -52,8 +52,9 @@ def asr():
         if args.model is None:
             args.model = "speech-recognition/vosk-models/vosk-model-en-in-0.4"
         if not os.path.exists(args.model):
-            print ("Please download a model for your language from https://alphacephei.com/vosk/models")
-            print ("and unpack as 'model' in the current folder.")
+            print(
+                "Please download a model for your language from https://alphacephei.com/vosk/models")
+            print("and unpack as 'model' in the current folder.")
             parser.exit(0)
         if args.samplerate is None:
             device_info = sd.query_devices(args.device, 'input')
@@ -67,27 +68,27 @@ def asr():
         else:
             dump_fn = None
 
-        with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
-                                channels=1, callback=callback):
-                print('#' * 80)
-                print('Press Ctrl+C to stop the recording')
-                print('#' * 80)
+        with sd.RawInputStream(samplerate=args.samplerate, blocksize=8000, device=args.device, dtype='int16',
+                               channels=1, callback=callback):
+            print('#' * 80)
+            print('Press Ctrl+C to stop the recording')
+            print('#' * 80)
 
-                rec = vosk.KaldiRecognizer(model, args.samplerate)
-                spoken_words = []
-                while len(spoken_words) != 1:
-                    data = q.get()
-                    if rec.AcceptWaveform(data):
-                        # print("rec.AcceptWaveform(data):")
-                        spoken_words.append(rec.Result())
-                        # print(spoken_words)
-                        y = json.loads(spoken_words[0])
-                        return(y['text'])
-                    # else:
-                    #     print(rec.PartialResult())
-                    if dump_fn is not None:
-                        print("if dump_fn is not None:")
-                        dump_fn.write(data)
+            rec = vosk.KaldiRecognizer(model, args.samplerate)
+            spoken_words = []
+            while len(spoken_words) != 1:
+                data = q.get()
+                if rec.AcceptWaveform(data):
+                    # print("rec.AcceptWaveform(data):")
+                    spoken_words.append(rec.Result())
+                    # print(spoken_words)
+                    y = json.loads(spoken_words[0])
+                    return(y['text'])
+                # else:
+                #     print(rec.PartialResult())
+                if dump_fn is not None:
+                    print("if dump_fn is not None:")
+                    dump_fn.write(data)
 
     except KeyboardInterrupt:
         print('\nDone')
@@ -95,13 +96,12 @@ def asr():
     except Exception as e:
         parser.exit(type(e).__name__ + ': ' + str(e))
 
-    
-    
 
-if __name__=='__main__':
+if __name__ == '__main__':
     print("\n")
     start_char = input("{} Press Enter to start {}".format('='*20, '='*20))
     if start_char != "":
         print("Please press Enter")
     else:
-        asr()
+        spoken = asr()
+        print(spoken)
