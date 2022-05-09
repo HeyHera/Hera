@@ -42,16 +42,7 @@ def music_playback(command):
         return("Please specify the song")
     search_success = 0
     if random_flag == 0:
-        if "by" in song_details:
-            song_title = song_details.split("by")[0].strip()
-            artist_name = song_details.split("by")[1].strip()
-            for song in music_list:
-                if song_title in str(song).lower() and artist_name in str(song).lower():
-                    song_file = str(song)
-                    search_success = 1
-                    break
-        else:
-            for song in music_list:
+       for song in music_list:
                 if song_details in str(song).lower():
                     song_file = str(song)
                     search_success = 1
@@ -104,11 +95,6 @@ def launch_applications(command):
         except:
             return("Sorry! An error encountered")        
         return("Sorry! Unable to find the application")
-
-# OPEN URL'S
-# COMMAND LIKE: "O"
-        # "Open Weather"
-
 
 if __name__ == '__main__':
     # spoken = launch_applications("Open terminal")
