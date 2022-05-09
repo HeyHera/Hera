@@ -36,6 +36,7 @@ def music_playback(command):
         song_details = command.split("play song")[1].strip()
     elif "play any song" or "play a song" or "play some song" or "play some music" in command:
         song_file = music_list[random.randint(0, len(music_list)-1)]
+        print("random", song_file)
         random_flag = 1
     else:
         return("Please specify the song")

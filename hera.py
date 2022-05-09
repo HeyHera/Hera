@@ -7,10 +7,19 @@ import numpy as np
 from tensorflow.keras.models import load_model
 import pyttsx3
 import os
+import subprocess
+import sys
+
+os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
 from importlib.machinery import SourceFileLoader
 asrmod= SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
 ttsmod=SourceFileLoader("espeak", "tts/espeak.py").load_module()
+sksmod=SourceFileLoader("skills", "skills/skills.py").load_module()
+
+
+#from Hera.skills.greeting import greeting
+
 
 
 
@@ -42,11 +51,26 @@ def prediction(y):
         try:
             spoken=asrmod.asr()
             print(spoken)
+            matchSkill(spoken)
+
+            
         except Exception as e:
             print("Couldnt call",e)
             
 
     time.sleep(0.1)
+
+
+def matchSkill(statement):
+    statement = statement.lower()
+
+    if "play music" in statement or "music" in statement or "song" in statement:
+            ttsmod.tts('Playing a random music')
+            sksmod.music_playback(statement)
+    elif statement.startswith("launch") or statement.startswith("open"):
+            sksmod.launch_applications(statement)
+            #os.system('randommusic')
+            
 
 
 def greeting():
