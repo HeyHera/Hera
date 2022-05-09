@@ -52,10 +52,11 @@ def prediction(y):
         print("---Speech Recognition Initialized--")
         
         
-        ttsmod.tts("Hello, What can I do for you?")
+        
+        ttsmod.tts(greeting())
         try:
-            create_asr()
-            print("called ASR")
+            spoken=create_asr()
+            print(spoken)
         except Exception as e:
             print("Couldnt call",e)
             
@@ -68,5 +69,19 @@ def prediction_thread(y):
 def create_asr():
     asr_thread = threading.Thread(target=foo.asr(),name="SpeechRecognition")
     asr_thread.start()
+
+def greeting():
+    t = time.localtime()
+    current_time = time.strftime("%H", t)
+    
+    if int(current_time) >= 0 and int(current_time) < 12:
+        greet_day_condition = "Good Morning"
+    elif int(current_time) >= 12 and int(current_time) < 16:
+        greet_day_condition = "Good Afternoon"
+    else:
+        greet_day_condition = "Good Evening"
+
+    return(greet_day_condition)
+
 
 voice_thread()

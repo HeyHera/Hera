@@ -9,20 +9,11 @@ import pyttsx3
 import os
 
 from importlib.machinery import SourceFileLoader
-foo= SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
+asrmod= SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
+ttsmod=SourceFileLoader("espeak", "tts/espeak.py").load_module()
 
 
-#### SETTING UP TEXT TO SPEECH ###
-engine = pyttsx3.init()
-voices = engine.getProperty('voices')
-engine.setProperty("rate",178)
-#engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_DAVID_11.0')
 
-def speak(audio):
-    engine.say(audio)
-    engine.runAndWait()
-    engine.endLoop()
-   
 ##### CONSTANTS ################
 fs = 22050
 seconds = 2
@@ -31,7 +22,7 @@ model = load_model("./wake-word-detection/saved_model/WWD.h5")
 
 ##### LISTENING THREAD #########
 def listener():
-    while True:
+    
         myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
         print("---Speak through Mic---")
         sd.wait()
@@ -46,19 +37,28 @@ def prediction(y):
     if prediction[:, 1] > 0.98:
         print("---Wake word detected---")
         print("---Speech Recognition Initialized--")
+        
+        ttsmod.tts(greeting())
         try:
-            foo.asr()
-
-            print("called ASR")
-            pred_thread.join()
+            spoken=asrmod.asr()
+            print(spoken)
         except Exception as e:
             print("Couldnt call",e)
-        # if engine._inLoop:
-        #     engine.endLoop()
-
-        # speak("Hello, What can I do for you?")
             
 
     time.sleep(0.1)
 
+
+def greeting():
+    t = time.localtime()
+    current_time = time.strftime("%H", t)
+    
+    if int(current_time) >= 0 and int(current_time) < 12:
+        greet_day_condition = "Good Morning"
+    elif int(current_time) >= 12 and int(current_time) < 16:
+        greet_day_condition = "Good Afternoon"
+    else:
+        greet_day_condition = "Good Evening"
+
+    return(greet_day_condition)
 listener()
