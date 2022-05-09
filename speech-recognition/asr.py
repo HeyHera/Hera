@@ -79,7 +79,7 @@ def asr():
                     if rec.AcceptWaveform(data):
                         print("rec.AcceptWaveform(data):")
                         spoken_words.append(rec.Result())
-                        print(spoken_words, rec.FinalResult)
+                        print(spoken_words, rec.)
                     # else:
                     #     print(rec.PartialResult())
                     if dump_fn is not None:
