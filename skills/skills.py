@@ -5,6 +5,7 @@ import os
 import subprocess
 import yaml
 import random
+import difflib
 
 os_username = os.getlogin()
 
@@ -27,6 +28,7 @@ def music_playback(command):
         if file.endswith(".mp3") or file.endswith(".wav") or file.endswith(".flac"):
             music_list.append(file)
     song_details = ""
+    random_flag = 0
     if "play the song" in command:
         song_details = command.split("play the song")[1].strip()
     elif "play song" in command:
@@ -36,8 +38,8 @@ def music_playback(command):
         random_flag = 1
     else:
         return("Please specify the song")
-    if random_flag != 1:
-        search_success = 0
+    search_success = 0
+    if random_flag == 0:
         if "by" in song_details:
             song_title = song_details.split("by")[0].strip()
             artist_name = song_details.split("by")[1].strip()
@@ -52,7 +54,7 @@ def music_playback(command):
                     song_file = str(song)
                     search_success = 1
                     break
-        if search_success == 0:
+    if search_success == 0:
             return("Sorry! I couldn't find the requested song")
     else:
         song_title = song_file.split(".")[0].split(" - ")[0].title()
@@ -65,5 +67,35 @@ def music_playback(command):
             return("Sorry! An error encountered")
 
 
+# LAUNCH PRELISTED APPLICATIONS
+# COMMAND LIKE: "Launch Google Chrome"
+        # "Open Weather"
+
+
+def launch_applications(command):
+    command = str(command).lower()
+    app_to_launch = ""
+    application_list = ["firefox", "google-chrome", "gnome-weather",
+                        "gnome-calculator"]
+    if command.startswith("open"):
+        app_to_launch = command.split("open")[1].strip().title()
+    elif command.startswith("launch"):
+        app_to_launch = command.split("launch")[1].strip().title()
+    if app_to_launch == "":
+        return("Please specify the application to launch")
+    closest_matched_apps = difflib.get_close_matches(
+        app_to_launch, application_list)
+    if len(closest_matched_apps) != 0:
+        try:
+            subprocess.call("/usr/bin/"+closest_matched_apps[0], stdout=subprocess.DEVNULL,
+                            stderr=subprocess.STDOUT)
+        except:
+            return("Sorry! An error encountered")
+    else:
+        return("Sorry! Unable to find the application")
+
+
 if __name__ == '__main__':
-    spoken = music_playback("Play any song")
+    spoken = launch_applications("Open google chrome")
+    # spoken = music_playback("Play the song In the end")
+    print(spoken)
