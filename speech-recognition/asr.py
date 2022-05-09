@@ -6,6 +6,7 @@ def asr():
     import sounddevice as sd
     import vosk
     import sys
+    import json
 
     q = queue.Queue()
 
@@ -77,9 +78,11 @@ def asr():
                 while len(spoken_words) != 1:
                     data = q.get()
                     if rec.AcceptWaveform(data):
-                        print("rec.AcceptWaveform(data):")
+                        # print("rec.AcceptWaveform(data):")
                         spoken_words.append(rec.Result())
-                        print(spoken_words, rec.)
+                        # print(spoken_words)
+                        y = json.loads(spoken_words[0])
+                        return(y['text'])
                     # else:
                     #     print(rec.PartialResult())
                     if dump_fn is not None:
