@@ -73,13 +73,17 @@ def asr():
                 print('#' * 80)
 
                 rec = vosk.KaldiRecognizer(model, args.samplerate)
-                while True:
+                spoken_words = []
+                while len(spoken_words) != 1:
                     data = q.get()
                     if rec.AcceptWaveform(data):
-                        print(rec.Result())
+                        print("rec.AcceptWaveform(data):")
+                        spoken_words.append(rec.Result())
+                        print(spoken_words, rec.FinalResult)
                     # else:
                     #     print(rec.PartialResult())
                     if dump_fn is not None:
+                        print("if dump_fn is not None:")
                         dump_fn.write(data)
 
     except KeyboardInterrupt:
