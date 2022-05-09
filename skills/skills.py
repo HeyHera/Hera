@@ -36,6 +36,7 @@ def music_playback(command):
         song_details = command.split("play song")[1].strip()
     elif "play any song" or "play a song" or "play some song" or "play some music" in command:
         song_file = music_list[random.randint(0, len(music_list)-1)]
+        print("random", song_file)
         random_flag = 1
     else:
         return("Please specify the song")
@@ -110,6 +111,6 @@ def launch_applications(command):
 
 
 if __name__ == '__main__':
-    spoken = launch_applications("Open terminal")
-    # spoken = music_playback("Play the song In the end")
+    #spoken = launch_applications("Open terminal")
+    spoken = music_playback("Play any song")
     print(spoken)
