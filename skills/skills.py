@@ -3,6 +3,7 @@
 
 import os
 import subprocess
+import webbrowser
 import yaml
 import random
 import difflib
@@ -33,7 +34,7 @@ def music_playback(command):
         song_details = command.split("play the song")[1].strip()
     elif "play song" in command:
         song_details = command.split("play song")[1].strip()
-    elif "play any song" or "play a song" in command:
+    elif "play any song" or "play a song" or "play some song" or "play some music" in command:
         song_file = music_list[random.randint(0, len(music_list)-1)]
         random_flag = 1
     else:
@@ -55,7 +56,7 @@ def music_playback(command):
                     search_success = 1
                     break
     if search_success == 0:
-            return("Sorry! I couldn't find the requested song")
+        return("Sorry! I couldn't find the requested song")
     else:
         song_title = song_file.split(".")[0].split(" - ")[0].title()
         artist_name = song_file.split(".")[0].split(" - ")[1].title()
@@ -76,7 +77,7 @@ def launch_applications(command):
     command = str(command).lower()
     app_to_launch = ""
     application_list = ["firefox", "google-chrome", "gnome-weather",
-                        "gnome-calculator"]
+                        "gnome-calculator", "gnome-terminal"]
     if command.startswith("open"):
         app_to_launch = command.split("open")[1].strip().title()
     elif command.startswith("launch"):
@@ -92,10 +93,23 @@ def launch_applications(command):
         except:
             return("Sorry! An error encountered")
     else:
+        sites = ["gmail.com", "youtube.com", "wikipedia.com", "flipkart.com",
+                 "amazon.in", "in.bookmyshow.com", "hotstar.com", "primevideo.com"]
+        closest_matched_sites = difflib.get_close_matches(
+            app_to_launch, sites)
+    if len(closest_matched_sites) != 0:
+        try:
+            webbrowser.open_new_tab(closest_matched_sites)
+        except:
+            return("Sorry! An error encountered")        
         return("Sorry! Unable to find the application")
+
+# OPEN URL'S
+# COMMAND LIKE: "O"
+        # "Open Weather"
 
 
 if __name__ == '__main__':
-    spoken = launch_applications("Open google chrome")
+    spoken = launch_applications("Open terminal")
     # spoken = music_playback("Play the song In the end")
     print(spoken)
