@@ -11,3 +11,6 @@ def countdown(n):
 from threading import Thread
 t = Thread(target = countdown, args =(10, ))
 t.start()
+for i in range(90, 100):
+    print(i)
+    time.sleep(1)
