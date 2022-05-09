@@ -7,7 +7,7 @@ def tts(text):
 # convert this text to speech
 #text = "Good morning Arjun"
 #text = "How are you Arjun, nandu, gokul and jithin"
-	engine.setProperty("rate", 105)
+	engine.setProperty("rate",140 )
 # checking voices
 	voices = engine.getProperty("voices")
 # set another voice

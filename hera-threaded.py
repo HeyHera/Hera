@@ -10,7 +10,7 @@ import os
 
 from importlib.machinery import SourceFileLoader
 foo= SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
-
+ttsmod=SourceFileLoader("espeak", "tts/espeak.py").load_module()
 
 #### SETTING UP TEXT TO SPEECH ###
 engine = pyttsx3.init()
@@ -50,15 +50,14 @@ def prediction(y):
     if prediction[:, 1] > 0.98:
         print("---Wake word detected---")
         print("---Speech Recognition Initialized--")
-      if engine._inLoop:
-          engine.endLoop()
         
-         speak("Hello, What can I do for you?")
-         try:
-             create_asr()
-             print("called ASR")
-         except Exception as e:
-             print("Couldnt call",e)
+        
+        ttsmod.tts("Hello, What can I do for you?")
+        try:
+            create_asr()
+            print("called ASR")
+        except Exception as e:
+            print("Couldnt call",e)
             
 
     time.sleep(0.1)
