@@ -81,21 +81,23 @@ def launch_applications(command):
             subprocess.call("/usr/bin/"+closest_matched_apps[0], stdout=subprocess.DEVNULL,
                             stderr=subprocess.STDOUT)
         except:
-            return("Sorry! An error encountered")
+            return("Sorry! An error encountered | App")
     else:
-        sites = ["gmail.com", "youtube.com", "wikipedia.com", "flipkart.com",
-                 "amazon.in", "in.bookmyshow.com", "hotstar.com", "primevideo.com"]
+        sites = ["www.gmail.com", "www.youtube.com", "www.wikipedia.com", "www.flipkart.com",
+                 "www.amazon.in", "www.in.bookmyshow.com", "www.hotstar.com", "www.primevideo.com"]
         closest_matched_sites = difflib.get_close_matches(
-            app_to_launch, sites)
+            app_to_launch, sites, cutoff = 0.3)
     if len(closest_matched_sites) != 0:
         try:
-            webbrowser.open_new_tab(closest_matched_sites)
-        except:
-            return("Sorry! An error encountered")        
-        return("Sorry! Unable to find the application")
+            print("Launching : "+ closest_matched_sites[0])
+            webbrowser.open_new_tab(closest_matched_sites[0])
+        except Exception as e:
+            return("Sorry! An error encountered | Sites", e)        
+    else:
+        return("Sorry! Unable to launch")
 
 if __name__ == '__main__':
-    # spoken = launch_applications("Open terminal")
-    spoken = music_playback("Play any song")
+    spoken = launch_applications("Open ")
+    # spoken = music_playback("Play any song")
     # spoken = music_playback("Play the song in the end")
     print(spoken)
