@@ -8,7 +8,7 @@ python3 -m venv Hera
 
 ### Installing dependencies
 ```
-python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+python -m pip install --user scipy matplotlib ipython jupyter pandas sympy nose
 ```
 ```
 pip install librosa
