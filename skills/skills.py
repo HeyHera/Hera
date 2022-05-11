@@ -50,8 +50,6 @@ def music_playback(command):
     if search_success == 0 and random_flag != 1:
         return("Sorry! I couldn't find the requested song")
     else:
-        # song_title = song_file.split(".")[0].split(" - ")[0].title()
-        # artist_name = song_file.split(".")[0].split(" - ")[1].title()
         vlc_path = "/usr/bin/vlc"
         try:
             subprocess.call([vlc_path, str(exp_user_path) +
