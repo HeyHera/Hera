@@ -11,9 +11,6 @@ python3 -m venv Hera
 python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
 ```
 ```
-python -m pip install  numpy scipy matplotlib ipython jupyter pandas sympy
-```
-```
 pip install librosa
 ```
 
@@ -27,17 +24,20 @@ pip install --upgrade tensorflow
 arecord -f cd -d 10 --device="hw:0,0" /tmp/test-mic.wav
 aplay /tmp/test-mic.wav
 ```
-###Preprocessing data
+### Preprocessing data
 preprocessing_data.py
 
 ### Preparing data  
 ```
 python preparing_data.py
-
 ```
 
-###Run wake-word model
+### Run wake-word model
+```
 prediction.py
+```
 
-###Run in threading mode
+### Run in threading mode
+```
 run-parallel.py
+```
