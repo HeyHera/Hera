@@ -2,3 +2,4 @@ env/
 speech-recognition/vosk-api/*
 speech-recognition/vosk-models/*
 **/__pycache__/
+output.wav
