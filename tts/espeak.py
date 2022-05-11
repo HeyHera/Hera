@@ -16,3 +16,6 @@ def tts(text):
 #engine.setProperty('voice', 'com.apple.speech.synthesis.voice.samantha')
 	engine.say(text)
 	engine.runAndWait()
+
+if __name__ == '__main__':
+	tts("Fire Fox")

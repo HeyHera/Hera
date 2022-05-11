@@ -50,7 +50,7 @@ def listener():
 def prediction(y):
     prediction = model.predict(np.expand_dims(y, axis=0))
     print(prediction[:, 1])
-    if prediction[:, 1] > 0.98:
+    if prediction[:, 1] == 0.0:
         print("---Wake word detected---")
         print("---Speech Recognition Initialized--")
 
