@@ -12,7 +12,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2`'
 
 asrmod = SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
-ttsmod = SourceFileLoader("espeak", "tts/espeak.py").load_module()
+ttsmod = SourceFileLoader("espeak", "text-to-speech/espeak.py").load_module()
 sksmod = SourceFileLoader("skills", "skills/skills.py").load_module()
 
 
