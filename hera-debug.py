@@ -1,4 +1,3 @@
-###### IMPORTS ###################
 from importlib.machinery import SourceFileLoader
 import time
 import sounddevice as sd
@@ -8,39 +7,30 @@ from tensorflow.keras.models import load_model
 from scipy.io.wavfile import write
 import os
 
-
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2`'
 
-asrmod = SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
-ttsmod = SourceFileLoader("espeak", "text-to-speech/espeak.py").load_module()
-sksmod = SourceFileLoader("skills", "skills/skills.py").load_module()
+# LOCAL IMPORTS
+asr_module = SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
+tts_module = SourceFileLoader("espeak", "text-to-speech/espeak.py").load_module()
+skill_module = SourceFileLoader("skills", "skills/skills.py").load_module()
+greeting_skill = SourceFileLoader(
+    "greeting-skill", "skills/greetings.py").load_module()
 
-
-#from Hera.skills.greeting import greeting
-
-
-##### CONSTANTS ################
+# CONSTANTS
 fs = 22050
 seconds = 2
 print(sd.default.device)
 
 model = load_model("wake-word-detection/saved_model/WWD.h5")
 
-print(sd.query_devices())
-# device_info = sd.query_devices(args.device, 'input')
-
-##### LISTENING THREAD #########
+# print(sd.query_devices())
 
 
 def listener():
-
     myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
     print("---Speak through Mic---")
     sd.wait()
-    write('output.wav', fs, myrecording)  # Save as WAV file 
-
-
-    # print(myrecording)
+    write('output.wav', fs, myrecording)  # Save as WAV file
     mfcc = librosa.feature.mfcc(y=myrecording.ravel(), sr=fs, n_mfcc=40)
     mfcc_processed = np.mean(mfcc.T, axis=0)
     prediction(mfcc_processed)
@@ -50,20 +40,20 @@ def listener():
 def prediction(y):
     prediction = model.predict(np.expand_dims(y, axis=0))
     print(prediction[:, 1])
-    if prediction[:, 1] == 0.0:
-        print("---Wake word detected---")
-        print("---Speech Recognition Initialized--")
-
-        ttsmod.tts(greeting())
+    if prediction[:, 1] != 0.0:
+        print("{} Wake Word Detected {}".format('='*20, '='*20))
+        tts_module.tts(greeting_skill.greeting())
         try:
-            spoken = asrmod.asr()
+            print("{} Automatic Speech Recognition Initialized {}".format(
+                '='*20, '='*20))
+            spoken = asr_module.asr()
             print(spoken)
             matchSkill(spoken)
 
         except Exception as e:
-            print("Couldnt call", e)
+            print("Couldn't connect with Automatic Speech Recognition", e)
     else:
-        print("Recognition Failed")
+        print("Recognition failed")
     time.sleep(0.1)
 
 
@@ -71,25 +61,9 @@ def matchSkill(statement):
     statement = statement.lower()
 
     if "play music" in statement or "music" in statement or "song" in statement:
-        ttsmod.tts('Playing a random music')
-        sksmod.music_playback(statement)
+        skill_module.music_playback(statement)
     elif statement.startswith("launch") or statement.startswith("open"):
-        sksmod.launch_applications(statement)
-        # os.system('randommusic')
-
-
-def greeting():
-    t = time.localtime()
-    current_time = time.strftime("%H", t)
-
-    if int(current_time) >= 0 and int(current_time) < 12:
-        greet_day_condition = "Good Morning"
-    elif int(current_time) >= 12 and int(current_time) < 16:
-        greet_day_condition = "Good Afternoon"
-    else:
-        greet_day_condition = "Good Evening"
-
-    return(greet_day_condition)
+        skill_module.launch_applications(statement)
 
 
 listener()
