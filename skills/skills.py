@@ -72,8 +72,10 @@ def launch_applications(command):
         app_to_launch = command.split("open")[1].strip().title()
     elif command.startswith("launch"):
         app_to_launch = command.split("launch")[1].strip().title()
-    if app_to_launch == "":
+    elif app_to_launch == "":
         return("Please specify the application to launch")
+    else:
+        print("An error occurred during pattern matching")
     closest_matched_apps = difflib.get_close_matches(
         app_to_launch, application_list)
     if len(closest_matched_apps) != 0:
@@ -87,17 +89,18 @@ def launch_applications(command):
                  "www.amazon.in", "www.in.bookmyshow.com", "www.hotstar.com", "www.primevideo.com"]
         closest_matched_sites = difflib.get_close_matches(
             app_to_launch, sites, cutoff = 0.3)
-    if len(closest_matched_sites) != 0:
-        try:
-            print("Launching : "+ closest_matched_sites[0])
-            webbrowser.open_new_tab(closest_matched_sites[0])
-        except Exception as e:
-            return("Sorry! An error encountered | Sites", e)        
-    else:
-        return("Sorry! Unable to launch")
+        if len(closest_matched_sites) != 0:
+            try:
+                print("Launching : "+ closest_matched_sites[0])
+                webbrowser.open_new_tab(closest_matched_sites[0])
+            except Exception as e:
+                return("Sorry! An error encountered | Sites", e)        
+        else:
+            return("Sorry! Unable to launch")
 
 if __name__ == '__main__':
-    spoken = launch_applications("Open ")
+    spoken = launch_applications("Open Terminal")
     # spoken = music_playback("Play any song")
     # spoken = music_playback("Play the song in the end")
-    print(spoken)
+    if spoken != None:
+        print(spoken)
