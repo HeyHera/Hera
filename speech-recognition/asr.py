@@ -1,6 +1,4 @@
 def asr():
-
-    import argparse
     import os
     import queue
     import sounddevice as sd
@@ -23,6 +21,7 @@ def asr():
         if not os.path.exists(model):
             print(
                 "Please download a model for your language from https://alphacephei.com/vosk/models")
+            exit()
         model = vosk.Model(model)
 
         with sd.RawInputStream(samplerate=samplerate, blocksize=8000, device=None, dtype='int16',
