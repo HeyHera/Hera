@@ -11,7 +11,8 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2`'
 
 # LOCAL IMPORTS
 asr_module = SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
-tts_module = SourceFileLoader("espeak", "text-to-speech/espeak.py").load_module()
+tts_module = SourceFileLoader(
+    "espeak", "text-to-speech/espeak.py").load_module()
 skill_module = SourceFileLoader("skills", "skills/skills.py").load_module()
 greeting_skill = SourceFileLoader(
     "greeting-skill", "skills/greetings.py").load_module()
@@ -30,7 +31,7 @@ def listener():
     myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
     print("---Speak through Mic---")
     sd.wait()
-    write('output.wav', fs, myrecording)  # Save as WAV file
+    write('output.wav', fs, myrecording)  # Save as WAV file for debugging
     mfcc = librosa.feature.mfcc(y=myrecording.ravel(), sr=fs, n_mfcc=40)
     mfcc_processed = np.mean(mfcc.T, axis=0)
     prediction(mfcc_processed)
@@ -61,9 +62,11 @@ def matchSkill(statement):
     statement = statement.lower()
 
     if "play music" in statement or "music" in statement or "song" in statement:
-        skill_module.music_playback(statement)
+        rtn = skill_module.music_playback(statement)
     elif statement.startswith("launch") or statement.startswith("open"):
-        skill_module.launch_applications(statement)
+        rtn = skill_module.launch_applications(statement)
+    if rtn != None:
+        tts_module.tts(rtn)
 
 
 listener()
