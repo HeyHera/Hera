@@ -13,9 +13,12 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2`'
 asr_module = SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
 tts_module = SourceFileLoader(
     "espeak", "text-to-speech/espeak.py").load_module()
-skill_module = SourceFileLoader("skills", "skills/skills.py").load_module()
 greeting_skill = SourceFileLoader(
     "greeting-skill", "skills/greetings.py").load_module()
+music_playback_skill = SourceFileLoader(
+    "music-playback-skill", "skills/music-playback.py").load_module()
+launch_application_skill = SourceFileLoader(
+    "launch-application", "skills/launch-application.py").load_module()
 
 # CONSTANTS
 fs = 22050
@@ -60,13 +63,20 @@ def prediction(y):
 
 def matchSkill(statement):
     statement = statement.lower()
-    rtn = "Sorry"
+    rtn = None
     if "play music" in statement or "music" in statement or "song" in statement:
-        rtn = skill_module.music_playback(statement)
+        rtn = music_playback_skill.music_playback(statement)
     elif statement.startswith("launch") or statement.startswith("open"):
-        rtn = skill_module.launch_applications(statement)
+        rtn = launch_application_skill.launch_applications(statement)
     if rtn != None:
-        tts_module.tts(rtn)
+        if rtn == 0:
+            print("Success")
+        elif rtn == 1:
+            print("Fail")
+        else:
+            print("Return Prompt")
+    else:
+        print("I am sorry")
 
 
 listener()
