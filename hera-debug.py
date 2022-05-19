@@ -60,7 +60,7 @@ def prediction(y):
 
 def matchSkill(statement):
     statement = statement.lower()
-
+    rtn = "Sorry"
     if "play music" in statement or "music" in statement or "song" in statement:
         rtn = skill_module.music_playback(statement)
     elif statement.startswith("launch") or statement.startswith("open"):
