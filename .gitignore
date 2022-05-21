@@ -3,3 +3,4 @@ speech-recognition/vosk-api/*
 speech-recognition/vosk-models/*
 **/__pycache__/
 output.wav
+wake-word-detection/recordings/

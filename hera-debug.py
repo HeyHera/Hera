@@ -1,82 +1,60 @@
 from importlib.machinery import SourceFileLoader
-import time
-import sounddevice as sd
-import librosa
-import numpy as np
-from tensorflow.keras.models import load_model
-from scipy.io.wavfile import write
-import os
+import threading
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2`'
 
 # LOCAL IMPORTS
-asr_module = SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
+wwd_module = SourceFileLoader(
+    "Wake-Word-Detection", "wake-word-detection/wake-word-detection.py").load_module()
+asr_module = SourceFileLoader(
+    "Automatic-Speech-Recognition", "speech-recognition/automatic-speech-recognition.py").load_module()
 tts_module = SourceFileLoader(
-    "espeak", "text-to-speech/espeak.py").load_module()
+    "Text-To-Speech", "text-to-speech/espeak.py").load_module()
 greeting_skill = SourceFileLoader(
-    "greeting-skill", "skills/greetings.py").load_module()
+    "Greeting-Skill", "skills/greetings.py").load_module()
 music_playback_skill = SourceFileLoader(
-    "music-playback-skill", "skills/music-playback.py").load_module()
+    "Music-Playback-Skill", "skills/music-playback.py").load_module()
 launch_application_skill = SourceFileLoader(
-    "launch-application", "skills/launch-application.py").load_module()
-
-# CONSTANTS
-fs = 22050
-seconds = 2
-print(sd.default.device)
-
-model = load_model("wake-word-detection/saved_model/WWD.h5")
-
-# print(sd.query_devices())
+    "Launch-Application", "skills/launch-application.py").load_module()
 
 
-def listener():
-    myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
-    print("---Speak through Mic---")
-    sd.wait()
-    write('output.wav', fs, myrecording)  # Save as WAV file for debugging
-    mfcc = librosa.feature.mfcc(y=myrecording.ravel(), sr=fs, n_mfcc=40)
-    mfcc_processed = np.mean(mfcc.T, axis=0)
-    prediction(mfcc_processed)
-    time.sleep(0.001)
+# CALLING WAKE-WORD-DETECTION IN A SEPARATE THREAD
+wwd_thread = threading.Thread(
+    target=wwd_module.listener(), name="Wake-Word-Detection-Thread")
+wwd_thread.start()
+wwd_thread.join()  # WAITING wwd_thread TO STOP EXECUTING
 
 
-def prediction(y):
-    prediction = model.predict(np.expand_dims(y, axis=0))
-    print(prediction[:, 1])
-    if prediction[:, 1] != 0.0:
-        print("{} Wake Word Detected {}".format('='*20, '='*20))
-        tts_module.tts(greeting_skill.greeting())
-        try:
-            print("{} Automatic Speech Recognition Initialized {}".format(
-                '='*20, '='*20))
-            spoken = asr_module.asr()
-            print(spoken)
-            matchSkill(spoken)
+# CALLING TEXT-TO-SPEECH FOR GREETING THE USER
+tts_module.tts(greeting_skill.greeting())
 
-        except Exception as e:
-            print("Couldn't connect with Automatic Speech Recognition", e)
+
+# CALLING AUTOMATIC-SPEECH-RECOGNITION TO RECOGNIZE COMMAND
+try:
+    print("{} Automatic Speech Recognition Initialized {}".format(
+        '='*20, '='*20))
+    spoken = asr_module.asr()
+    print(spoken)
+except Exception as e:
+    print("Couldn't connect with Automatic Speech Recognition", e)
+
+
+# MATCHING THE COMMAND WITH CORRESPONDING SKILL
+statement = spoken.lower()
+skill_response = None
+if "play music" in statement or "music" in statement or "song" in statement:
+    print("Skill: music_playback_skill")
+    skill_response = music_playback_skill.music_playback(statement)
+elif statement.startswith("launch") or statement.startswith("open"):
+    print("Skill: launch_application_skill")
+    skill_response = launch_application_skill.launch_applications(statement)
+print(skill_response)
+if skill_response != None:
+    if skill_response == 0:
+        print("Success")
+    elif skill_response == 1:
+        print("Fail")
     else:
-        print("Recognition failed")
-    time.sleep(0.1)
-
-
-def matchSkill(statement):
-    statement = statement.lower()
-    rtn = None
-    if "play music" in statement or "music" in statement or "song" in statement:
-        rtn = music_playback_skill.music_playback(statement)
-    elif statement.startswith("launch") or statement.startswith("open"):
-        rtn = launch_application_skill.launch_applications(statement)
-    if rtn != None:
-        if rtn == 0:
-            print("Success")
-        elif rtn == 1:
-            print("Fail")
-        else:
-            print("Return Prompt")
-    else:
-        print("I am sorry")
-
-
-listener()
+        print("Return Prompt")
+else:
+    print("I am sorry")
+    tts_module.tts("I am sorry")

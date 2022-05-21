@@ -10,7 +10,7 @@ def music_playback(command):
     from importlib.machinery import SourceFileLoader
     import difflib
     tts_module = SourceFileLoader(
-        "espeak", "text-to-speech/espeak.py").load_module()
+        "Text-To-Speech", "text-to-speech/espeak.py").load_module()
 
     def random_song(music_list):
         tts_module.tts("Playing a random song")
