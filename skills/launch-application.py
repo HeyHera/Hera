@@ -37,6 +37,7 @@ def launch_applications(command):
             print("Opening {}".format(to_be_launched))
             subprocess.call("/usr/bin/"+app_dist[to_be_launched], stdout=subprocess.DEVNULL,
                             stderr=subprocess.STDOUT)
+            return(0)  # 0 = Success
         except Exception as e:
             tts_module.tts("Sorry! An error encountered | App " + str(e))
             return(1)  # 1 = Fail
@@ -51,6 +52,7 @@ def launch_applications(command):
                 to_be_launched = closest_matched_sites[0]
                 print("Launching : " + to_be_launched)
                 webbrowser.open_new_tab(to_be_launched)
+                return(0)  # 0 = Success
             except Exception as e:
                 tts_module.tts("Sorry! An error encountered | Sites " + str(e))
                 return(1)  # 1 = Fail
@@ -61,7 +63,7 @@ def launch_applications(command):
 
 if __name__ == '__main__':
     skill_response = None
-    skill_response = launch_applications("Open command prompt")
+    skill_response = launch_applications("Open browser")
     # spoken = launch_applications("Launch Wikipedia")
     if skill_response != None:
         if skill_response == 0:
