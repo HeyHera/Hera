@@ -50,7 +50,7 @@ def asr():
 
 if __name__ == '__main__':
     print("\n")
-    start_char = input("{} Press Enter to start {}".format('='*20, '='*20))
+    start_char = input("\n{} PRESS ENTER TO START {}\n".format('='*20, '='*20))
     if start_char != "":
         print("Please press Enter")
     else:

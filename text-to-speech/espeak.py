@@ -2,20 +2,19 @@ import pyttsx3
 
 # initialize Text-to-speech engine
 
-def tts(text): 
-	engine = pyttsx3.init()
-# convert this text to speech
-#text = "Good morning Arjun"
-#text = "How are you Arjun, nandu, gokul and jithin"
-	engine.setProperty("rate",140 )
-# checking voices
-	voices = engine.getProperty("voices")
-# set another voice
-#engine.setProperty("voice", voices[10].id)
-	engine.setProperty('voice', 'english_rp+f3') #female
-#engine.setProperty('voice', 'com.apple.speech.synthesis.voice.samantha')
-	engine.say(text)
-	engine.runAndWait()
+
+def tts(text):
+    engine = pyttsx3.init()
+    engine.setProperty("rate", 140)
+    # checking voices
+    # voices = engine.getProperty("voices")
+    print(text)
+    # set another voice
+    #engine.setProperty("voice", voices[10].id)
+    engine.setProperty('voice', 'english_rp+f3')  # female
+    engine.say(text)
+    engine.runAndWait()
+
 
 if __name__ == '__main__':
-	tts("Fire Fox")
+    tts("Fire Fox")
