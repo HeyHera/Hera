@@ -40,6 +40,8 @@ def music_playback(command):
         song_details = command.split("play the song")[1].strip()
     elif "play song" in command:
         song_details = command.split("play song")[1].strip()
+    elif "play" in command:
+        song_details = command.split("play")[1].strip()
     elif "any song" in command or "play a song" in command\
             or "play some song" in command or "play some music" in command\
             or "play any music" in command or "play some music" in command\
@@ -81,7 +83,7 @@ def music_playback(command):
 
 if __name__ == '__main__':
     skill_response = None
-    skill_response = music_playback("play the song from Grand Master")
+    skill_response = music_playback("play dusk till dawn")
     # skill_response = music_playback("Play the song in the end")
     if skill_response != None:
         if skill_response == 0:
