@@ -78,8 +78,6 @@ while(True):
             print("Return prompt")
         elif skill_response != None:
             tts_module.tts("Sorry! I did't understood that.")
-        print("\n"+"*"*80)
-        print("*"*80)
+        print("\n" + "*"*80)
         print("End of pass #{}".format(main_pass_no))
-        print("*"*80)
-        print("*"*80)
+        print("*"*80 + "\n")
