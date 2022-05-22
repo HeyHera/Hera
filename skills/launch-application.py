@@ -30,7 +30,7 @@ def launch_applications(command):
         tts_module.tts("Please specify the application to launch.")
         return(2)  # 2 = Return Prompt
     closest_matched_apps = difflib.get_close_matches(
-        app_to_launch, application_list, cutoff=0.5)
+        app_to_launch, application_list, cutoff=0.4)
     if len(closest_matched_apps) != 0:
         try:
             to_be_launched = closest_matched_apps[0].split(',')[0]
