@@ -38,8 +38,14 @@ def listener():
 
 
 if __name__ == '__main__':
-    wwd_thread = threading.Thread(
-        target=listener, name="Wake-Word-Detection-Thread")
-    wwd_thread.start()
-    wwd_thread.join()
+
+    start_char = input("Press Enter to start: ")
+    if start_char != "":
+        print("Exiting")
+        exit()
+    else:
+        wwd_thread = threading.Thread(
+            target=listener, name="Wake-Word-Detection-Thread")
+        wwd_thread.start()
+        wwd_thread.join()
     print("\nComplete")
