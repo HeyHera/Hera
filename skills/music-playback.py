@@ -27,7 +27,7 @@ def music_playback(command):
         exit()
 
     exp_user_path = os.path.expanduser(yaml_load['Directories']['Music'])
-    print(exp_user_path)
+    # print(exp_user_path)
     file_list = os.listdir(exp_user_path)
     song_file = None
     for file in file_list:
@@ -81,7 +81,7 @@ def music_playback(command):
 
 if __name__ == '__main__':
     skill_response = None
-    skill_response = music_playback("play the song")
+    skill_response = music_playback("play the song from Grand Master")
     # skill_response = music_playback("Play the song in the end")
     if skill_response != None:
         if skill_response == 0:

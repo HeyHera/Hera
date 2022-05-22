@@ -23,6 +23,7 @@ except Exception as e:
 main_pass_no = 0
 while(True):
     main_pass_no += 1
+    print("\n[__main__] Pass #{}".format(main_pass_no))
     try:
         # CALLING WAKE-WORD-DETECTION IN A SEPARATE THREAD
         print("\n{} Wake Word Detection thread starting {}".format(
@@ -78,6 +79,3 @@ while(True):
             print("Return prompt")
         elif skill_response != None:
             tts_module.tts("Sorry! I did't understood that.")
-        print("\n" + "*"*80)
-        print("End of pass #{}".format(main_pass_no))
-        print("*"*80 + "\n")

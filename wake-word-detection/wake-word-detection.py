@@ -21,7 +21,7 @@ def listener():
     while True:
         myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
         pass_number += 1
-        print("Pass #{}".format(pass_number))
+        print("[WWD] Pass #{}".format(pass_number))
         print("Waiting for wake word")
         sd.wait()
         mfcc = librosa.feature.mfcc(y=myrecording.ravel(), sr=fs, n_mfcc=40)
