@@ -32,7 +32,7 @@ while(True):
         wwd_thread.start()
         wwd_thread.join()  # WAITING wwd_thread TO STOP EXECUTING
     except Exception as e:
-        print("\nAn error occurred while starting Wake Word Detection thread")
+        print("An error occurred while starting Wake Word Detection thread")
 
     # WHILE WAKE WORD IS NOT WORKING
     start_char = input("Press Enter to continue: ")
@@ -60,13 +60,13 @@ while(True):
         print("\n{} Skill match starting {}".format(
             '='*20, '='*20))
         if statement == "":
-            print("\nNothing received as command")
+            print("Nothing received as command")
             # PLAY AN AUDITORY ERROR BELL
         if "play" in statement or "music" in statement or "song" in statement:
-            print("\nMatched: music_playback_skill")
+            print("Matched: music_playback_skill")
             skill_response = music_playback_skill.music_playback(statement)
         elif statement.startswith("launch") or statement.startswith("open"):
-            print("\nMatched: launch_application_skill")
+            print("Matched: launch_application_skill")
             skill_response = launch_application_skill.launch_applications(
                 statement)
         print("Skill response: {}" .format(skill_response))
@@ -78,6 +78,8 @@ while(True):
             print("Return prompt")
         elif skill_response != None:
             tts_module.tts("Sorry! I did't understood that.")
-        print("\n"+"#"*80)
+        print("\n"+"*"*80)
+        print("*"*80)
         print("End of pass #{}".format(main_pass_no))
-        print("#"*80)
+        print("*"*80)
+        print("*"*80)

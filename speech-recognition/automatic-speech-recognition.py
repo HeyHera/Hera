@@ -20,14 +20,14 @@ def asr():
         model = "speech-recognition/vosk-models/vosk-model-en-in-0.4"
         if not os.path.exists(model):
             print(
-                "\nPlease download a model for your language from https://alphacephei.com/vosk/models.")
+                "Please download a model for your language from https://alphacephei.com/vosk/models.")
             exit()
         model = vosk.Model(model)
 
         with sd.RawInputStream(samplerate=samplerate, blocksize=8000, device=None, dtype='int16',
                                channels=1, callback=callback):
             # int16: 16-bit audio format
-            print("\nPress Ctrl+C to stop the recording")
+            print("Press Ctrl+C to stop the recording")
             # Audio in wav mono format
             rec = vosk.KaldiRecognizer(model, samplerate)
             spoken_words = []
