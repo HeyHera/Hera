@@ -2,33 +2,43 @@ from importlib.machinery import SourceFileLoader
 import threading
 
 # LOCAL IMPORTS
-wwd_module = SourceFileLoader(
-    "Wake-Word-Detection", "wake-word-detection/wake-word-detection.py").load_module()
-asr_module = SourceFileLoader(
-    "Automatic-Speech-Recognition", "speech-recognition/automatic-speech-recognition.py").load_module()
-tts_module = SourceFileLoader(
-    "Text-To-Speech", "text-to-speech/espeak.py").load_module()
-greeting_skill = SourceFileLoader(
-    "Greeting-Skill", "skills/greetings.py").load_module()
-music_playback_skill = SourceFileLoader(
-    "Music-Playback-Skill", "skills/music-playback.py").load_module()
-launch_application_skill = SourceFileLoader(
-    "Launch-Application", "skills/launch-application.py").load_module()
+try:
+    wwd_module = SourceFileLoader(
+        "Wake-Word-Detection", "wake-word-detection/wake-word-detection.py").load_module()
+    asr_module = SourceFileLoader(
+        "Automatic-Speech-Recognition", "speech-recognition/automatic-speech-recognition.py").load_module()
+    tts_module = SourceFileLoader(
+        "Text-To-Speech", "text-to-speech/espeak.py").load_module()
+    greeting_skill = SourceFileLoader(
+        "Greeting-Skill", "skills/greetings.py").load_module()
+    music_playback_skill = SourceFileLoader(
+        "Music-Playback-Skill", "skills/music-playback.py").load_module()
+    launch_application_skill = SourceFileLoader(
+        "Launch-Application", "skills/launch-application.py").load_module()
+    print("\nLocal imports successful")
+except Exception as e:
+    print("\nLocal imports unsuccessful.\n" + str(e))
 
 # TO RUN INDEFINITELY
+main_pass_no = 0
 while(True):
-
-    # CALLING WAKE-WORD-DETECTION IN A SEPARATE THREAD
-    wwd_thread = threading.Thread(
-        target=wwd_module.listener(), name="Wake-Word-Detection-Thread")
-    wwd_thread.start()
-    wwd_thread.join()  # WAITING wwd_thread TO STOP EXECUTING
+    main_pass_no += 1
+    try:
+        # CALLING WAKE-WORD-DETECTION IN A SEPARATE THREAD
+        print("\n{} Wake Word Detection thread starting {}".format(
+            '='*20, '='*20))
+        wwd_thread = threading.Thread(
+            target=wwd_module.listener(), name="Wake-Word-Detection-Thread")
+        wwd_thread.start()
+        wwd_thread.join()  # WAITING wwd_thread TO STOP EXECUTING
+    except Exception as e:
+        print("\nAn error occurred while starting Wake Word Detection thread")
 
     # WHILE WAKE WORD IS NOT WORKING
-    start_char = input(
-        "\n{} PRESS ENTER TO CONTINUE {}\n".format('='*20, '='*20))
+    start_char = input("Press Enter to continue: ")
     if start_char != "":
-        print("Please press Enter")
+        print("Exiting")
+        exit()
     else:
 
         # CALLING TEXT-TO-SPEECH FOR GREETING THE USER
@@ -36,32 +46,38 @@ while(True):
 
         # CALLING AUTOMATIC-SPEECH-RECOGNITION TO RECOGNIZE COMMAND
         try:
-            print("{} Automatic Speech Recognition Initialized {}".format(
+            print("\n{} Automatic Speech Recognition initializing {}".format(
                 '='*20, '='*20))
             spoken = asr_module.asr()
             print(spoken)
         except Exception as e:
-            tts_module.tts(
-                "Error encountered. I couldn't connect with Automatic Speech Recognition")
-            print(e)
+            print(
+                "\nError encountered. Couldn't connect with Automatic Speech Recognition.\n" + str(e))
 
         # MATCHING THE COMMAND WITH CORRESPONDING SKILL
         statement = spoken.lower()
         skill_response = None
+        print("\n{} Skill match starting {}".format(
+            '='*20, '='*20))
+        if statement == "":
+            print("\nNothing received as command")
+            # PLAY AN AUDITORY ERROR BELL
         if "play" in statement or "music" in statement or "song" in statement:
-            print("Skill: music_playback_skill")
+            print("\nMatched: music_playback_skill")
             skill_response = music_playback_skill.music_playback(statement)
         elif statement.startswith("launch") or statement.startswith("open"):
-            print("Skill: launch_application_skill")
+            print("\nMatched: launch_application_skill")
             skill_response = launch_application_skill.launch_applications(
                 statement)
-        print(skill_response)
-        if skill_response != None:
-            if skill_response == 0:
-                print("Success")
-            elif skill_response == 1:
-                print("Fail")
-            else:
-                print("Return prompt")
-        else:
+        print("Skill response: {}" .format(skill_response))
+        if skill_response == 0:
+            print("Success")
+        elif skill_response == 1:
+            print("Fail")
+        elif skill_response == 2:
+            print("Return prompt")
+        elif skill_response != None:
             tts_module.tts("Sorry! I did't understood that.")
+        print("\n"+"#"*80)
+        print("End of pass #{}".format(main_pass_no))
+        print("#"*80)

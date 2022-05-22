@@ -27,7 +27,7 @@ def launch_applications(command):
     elif command.startswith("launch"):
         app_to_launch = command.split("launch")[1].strip().title()
     elif app_to_launch == "":
-        tts_module.tts("Please specify the application to launch")
+        tts_module.tts("Please specify the application to launch.")
         return(2)  # 2 = Return Prompt
     closest_matched_apps = difflib.get_close_matches(
         app_to_launch, application_list, cutoff=0.5)
@@ -39,7 +39,8 @@ def launch_applications(command):
                             stderr=subprocess.STDOUT)
             return(0)  # 0 = Success
         except Exception as e:
-            tts_module.tts("Sorry! An error encountered | App " + str(e))
+            tts_module.tts("Sorry! An error encountered.")
+            print("App " + str(e))
             return(1)  # 1 = Fail
     else:
         sites = ["www.gmail.com", "www.youtube.com", "www.wikipedia.com", "www.flipkart.com",
@@ -54,7 +55,8 @@ def launch_applications(command):
                 webbrowser.open_new_tab(to_be_launched)
                 return(0)  # 0 = Success
             except Exception as e:
-                tts_module.tts("Sorry! An error encountered | Sites " + str(e))
+                tts_module.tts("Sorry! An error encountered")
+                print("Sites " + str(e))
                 return(1)  # 1 = Fail
         else:
             tts_module.tts("Sorry! Unable to launch")
@@ -63,7 +65,7 @@ def launch_applications(command):
 
 if __name__ == '__main__':
     skill_response = None
-    skill_response = launch_applications("Open browser")
+    skill_response = launch_applications("Open the terminal")
     # spoken = launch_applications("Launch Wikipedia")
     if skill_response != None:
         if skill_response == 0:
@@ -71,6 +73,6 @@ if __name__ == '__main__':
         elif skill_response == 1:
             print("Fail")
         else:
-            print("Return Prompt")
+            print("Return prompt")
     else:
         print("Error")
