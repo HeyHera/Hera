@@ -40,14 +40,14 @@ def music_playback(command):
         song_details = command.split("play the song")[1].strip()
     elif "play song" in command:
         song_details = command.split("play song")[1].strip()
-    elif "play" in command:
-        song_details = command.split("play")[1].strip()
     elif "any song" in command or "play a song" in command\
             or "play some song" in command or "play some music" in command\
             or "play any music" in command or "play some music" in command\
             or "play some song" in command or "random song" in command:
         song_file = random_song(music_list=music_list)
         random_flag = 1
+    elif "play" in command:
+        song_details = command.split("play")[1].strip()
     else:
         tts_module.tts("Please specify the song")
         return(2)  # 2 = Return Prompt
