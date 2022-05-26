@@ -4,8 +4,8 @@ import pyttsx3
 try:
     # Comment out these lines if you don't want sound output
     engine = pyttsx3.init()
-    print("\n{} Text To Speech engine initialized {}".format(
-        '='*20, '='*20))
+    # print("\n{} Text To Speech engine initialized {}".format(
+    #     '='*20, '='*20))
     engine.setProperty("rate", 140)
     # -------------------------
     # checking voices
