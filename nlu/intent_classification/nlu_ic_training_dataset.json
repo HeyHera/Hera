@@ -1,0 +1,20 @@
+{
+    "play some music": "RANDOM_SONG",
+    "play any music": "RANDOM_SONG",
+    "play a song": "RANDOM_SONG",
+    "play a random song": "RANDOM_SONG",
+    "please play a random song": "RANDOM_SONG",
+    "play a song at random": "RANDOM_SONG",
+    "play some random music": "RANDOM_SONG",
+    "play some random song": "RANDOM_SONG",
+    "play any song": "RANDOM_SONG",
+    "play some random songs": "RANDOM_SONG",
+    "play any songs": "RANDOM_SONG",
+    "would you please play a random music": "RANDOM_SONG",
+    "would you please play a random song": "RANDOM_SONG",
+    "play the song magic": "SPECIFIC_SONG",
+    "play the music in the end": "SPECIFIC_SONG",
+    "please play the song memories": "SPECIFIC_SONG",
+    "play animals": "SPECIFIC_SONG",
+    "would you please play the song battle symphony": "SPECIFIC_SONG"
+}
