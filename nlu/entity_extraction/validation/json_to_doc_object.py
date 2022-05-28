@@ -4,7 +4,7 @@ import json
 from spacy.tokens import DocBin
 
 # define our training data to TRAIN_DATA
-with open(file='nlu/spacy_training/validation/training_data.json', mode='r') as fp:
+with open(file='nlu/entity_extraction/validation/training_data.json', mode='r') as fp:
     collective_dict = json.load(fp)
 TRAIN_DATA = collective_dict['TRAINING_DATA']
 
@@ -44,4 +44,4 @@ def create_training_set(TRAIN_DATA):
 TRAIN_DATA_DOC = create_training_set(TRAIN_DATA)
 
 # Export results (here I add it to a TRAIN_DATA folder within the directory)
-TRAIN_DATA_DOC.to_disk("nlu/spacy_training/TRAIN_DATA_dev.spacy")
+TRAIN_DATA_DOC.to_disk("nlu/entity_extraction/TRAIN_DATA_dev.spacy")

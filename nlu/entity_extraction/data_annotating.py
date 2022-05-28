@@ -4,7 +4,7 @@ import regex as re
 import json
 
 # this dictionary will contain all annotated examples
-with open(file='nlu/spacy_training/training_data.json', mode='r') as fp:
+with open(file='nlu/entity_extraction/nlu_ee_training_data.json', mode='r') as fp:
     collective_dict = json.load(fp)
 collective_dict = {'TRAINING_DATA': []}
 
@@ -39,7 +39,7 @@ def structure_training_data(text, kw_list, entity_label):
 
 
 if __name__ == '__main__':
-    with open(file="nlu/spacy_training/spacy_train_text.txt", mode='r', encoding='utf-8') as spacy_train_text:
+    with open(file="nlu/entity_extraction/spacy_train_text.txt", mode='r', encoding='utf-8') as spacy_train_text:
         text = spacy_train_text.read()
     kw_list = ['terminal', 'firefox', 'google chrome', 'weather', 'calculator', 'files']
     entity_label = "APPLICATION"
@@ -48,8 +48,8 @@ if __name__ == '__main__':
     print("\n{} Result {}".format("="*80, "="*80))
     print(collective_dict)
     try:
-        with open("nlu/spacy_training/training_data.json", "w") as training_data:
+        with open("nlu/entity_extraction/nlu_ee_training_data.json", "w") as training_data:
             json.dump(collective_dict, training_data, indent=4)
-        print("\nTraining data annotation finished. Saved to nlu/spacy_training/training_data.json")
+        print("\nTraining data annotation finished. Saved to nlu/entity_extraction/nlu_ee_training_data.json")
     except Exception as e:
         print("Exception: ", e)
