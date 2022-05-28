@@ -43,3 +43,6 @@ Next, run the following to begin training
 python -m spacy train config.cfg --output ./output
 ```
 After training is complete, the resulting model will appear in a new folder called output.
+
+### Step #6: Checking prediction result
+Run 'run.py'.

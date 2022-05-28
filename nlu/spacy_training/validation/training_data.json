@@ -1,0 +1,41 @@
+{
+    "TRAINING_DATA": [
+        [
+            "Please open the application terminal. Open task manager. Please launch vlc. Would you please launch terminal. Launch software. Launch the application firefox. Please launch notepad. \nKindly open weather.",
+            {
+                "entities": [
+                    [
+                        173,
+                        180,
+                        "APPLICATION"
+                    ],
+                    [
+                        43,
+                        55,
+                        "APPLICATION"
+                    ],
+                    [
+                        71,
+                        74,
+                        "APPLICATION"
+                    ],
+                    [
+                        117,
+                        125,
+                        "APPLICATION"
+                    ],
+                    [
+                        28,
+                        36,
+                        "APPLICATION"
+                    ],
+                    [
+                        100,
+                        108,
+                        "APPLICATION"
+                    ]
+                ]
+            }
+        ]
+    ]
+}

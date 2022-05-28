@@ -1,6 +1,6 @@
 import spacy
 
-model_test = "open terminal
+model_test = "please open the application notepad"
 
 # load the trained model
 nlp_output = spacy.load("nlu/spacy_training/output/model-best")
