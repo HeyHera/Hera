@@ -4,3 +4,4 @@ speech-recognition/vosk-models/*
 **/__pycache__/
 output.wav
 wake-word-detection/recordings/
+nlu/spacy_training/output/

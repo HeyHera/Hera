@@ -1,0 +1,102 @@
+{
+    "TRAINING_DATA": [
+        [
+            "BigTime Care has a broad array of service offerings for Philadelphia-area clientele. For 50 years, we have specialized in landscaping and lawn mowing. We also provide seasonal snow removal services for local commercial and residential properties. Call any time to schedule a consultation!\n",
+            {
+                "entities": [
+                    [
+                        122,
+                        133,
+                        "SERVICE"
+                    ],
+                    [
+                        138,
+                        149,
+                        "SERVICE"
+                    ],
+                    [
+                        176,
+                        188,
+                        "SERVICE"
+                    ]
+                ]
+            }
+        ],
+        [
+            "Scrub-O Cleaning connects independent professionals with customers. We offer the full range of customizable cleaning services that you may need now and in the future, and our team is ready to begin working for you today! We offer quality maid services and housekeeping across the San Francisco Bay Area.\n",
+            {
+                "entities": [
+                    [
+                        108,
+                        125,
+                        "SERVICE"
+                    ],
+                    [
+                        238,
+                        251,
+                        "SERVICE"
+                    ],
+                    [
+                        256,
+                        268,
+                        "SERVICE"
+                    ]
+                ]
+            }
+        ],
+        [
+            "Locally owned and operated, Trust Roofing has the best roofing services in Philadelphia and the surrounding areas. Whatever the season, you can count on us to provide you with the best possible roof repair. We will work with any given roof replacement material, including asphalt shingles and metal roofs. Siding replacement services are also available.\n",
+            {
+                "entities": [
+                    [
+                        34,
+                        41,
+                        "SERVICE"
+                    ],
+                    [
+                        55,
+                        62,
+                        "SERVICE"
+                    ],
+                    [
+                        194,
+                        205,
+                        "SERVICE"
+                    ],
+                    [
+                        306,
+                        324,
+                        "SERVICE"
+                    ]
+                ]
+            }
+        ],
+        [
+            "Based in Pittsburgh PA, Tammy's Branch Cuts is a family owned and managed smalled businesses founded in 1994. We specialize in full-service landscape design, including tree removal, lawn care to protect your existing plants, and comprehensive hardscaping for patios, walkways, and outdoor living spaces. Contact us today!\n",
+            {
+                "entities": [
+                    [
+                        140,
+                        156,
+                        "SERVICE"
+                    ],
+                    [
+                        168,
+                        180,
+                        "SERVICE"
+                    ],
+                    [
+                        182,
+                        191,
+                        "SERVICE"
+                    ],
+                    [
+                        243,
+                        254,
+                        "SERVICE"
+                    ]
+                ]
+            }
+        ]
+    ]
+}

@@ -1,4 +1,6 @@
 venv - https://docs.python.org/3/library/venv.html
-Vosk - https://alphacephei.com/vosk/, https://github.com/alphacep/vosk-api
+tensorflow - https://www.tensorflow.org/
+vosk - https://alphacephei.com/vosk/, https://github.com/alphacep/vosk-api
 spacy - https://spacy.io/
-rasa
+sklearn - https://scikit-learn.org/
+nix-tts - https://github.com/rendchevi/nix-tts
