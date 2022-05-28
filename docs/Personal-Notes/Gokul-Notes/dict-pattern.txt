@@ -1,0 +1,24 @@
+# dict = {
+#     "intents": [
+#         {
+#             "patterns": ["play some music", "play any music", "play a song", "play a random song", "please play a random song",
+#                          "play a song at random", "play some random music", "play some random song", "play any song", "play some random songs",
+#                          "play any songs", "would you please play a random music", "would you please play a random song"],
+#             "intent_label": "RANDOM_SONG",
+#             "response": "Playing a random song",
+
+#         },
+#         {
+#             "patterns": ["play the song magic", "play the music in the end", "please play the song memories", "play animals", "would you please play the song battle symphony"],
+#             "intent_label": "SPECIFIC_SONG",
+#             "response": ""
+#         }
+#     ]
+# }
+
+# try:
+#     with open("nlu/intent_classification/training_dataset.json", "w") as training_data:
+#         json.dump(dict, training_data, indent=4)
+#     print("\nTraining data. Saved to nlu/intent_classification/training_dataset.json")
+# except Exception as e:
+#     print("Exception: ", e)
