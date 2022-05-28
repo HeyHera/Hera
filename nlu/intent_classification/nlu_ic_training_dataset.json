@@ -16,5 +16,10 @@
     "play the music in the end": "SPECIFIC_SONG",
     "please play the song memories": "SPECIFIC_SONG",
     "play animals": "SPECIFIC_SONG",
-    "would you please play the song battle symphony": "SPECIFIC_SONG"
+    "would you please play the song battle symphony": "SPECIFIC_SONG",
+    "please play the song from grandmaster": "ALBUM_SONG",
+    "play the song from 1984": "ALBUM_SONG",
+    "would you please play a song from grandmaster": "ALBUM_SONG",
+    "would you please play a song from collage": "ALBUM_SONG",
+    "play a song from for you": "ALBUM_SONG"
 }

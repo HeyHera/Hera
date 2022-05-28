@@ -12,5 +12,5 @@ def classify(str):
 
 
 if __name__ == '__main__':
-    pt = classify('play the song from grandmaster')
+    pt = classify('would you be pleased if i asked you to play a song')
     print(pt)
