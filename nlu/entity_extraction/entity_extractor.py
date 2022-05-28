@@ -1,6 +1,6 @@
 import spacy
 
-model_test = "open terminal"
+model_test = "would you be pleased if i asked you to open the google chrome"
 
 # load the trained model
 nlp_output = spacy.load("nlu/entity_extraction/output/model-best")
