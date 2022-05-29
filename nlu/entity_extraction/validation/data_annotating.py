@@ -40,8 +40,9 @@ def structure_training_data(text, kw_list, entity_label):
 if __name__ == '__main__':
     with open(file="nlu/entity_extraction/validation/spacy_validation_text.txt", mode='r', encoding='utf-8') as spacy_train_text:
         text = spacy_train_text.read()
-    kw_list = ['notepad', 'task manager', 'vlc', 'software', 'terminal']
-    entity_label = "APPLICATION"
+    kw_list = ['these two windows', 'must have been the wind', 'in the cape god', 'love me wrong', 'wreaking ball', 'bad new baby', 'dark hearts']
+    kw_list = set(kw_list)
+    entity_label = "MUSIC"
     structure_training_data(text=text, kw_list=kw_list,
                             entity_label=entity_label)
     print("\n{} Result {}".format("="*80, "="*80))

@@ -1,7 +1,7 @@
 import spacy
-nlp_output = spacy.load("nlu/entity_extraction/output/model-best")
 
-def extract(model_test_sentence, entity_label):
+def extract(model_test_sentence, entity_label, model_path):
+    nlp_output = spacy.load(model_path)
     doc = nlp_output(model_test_sentence)
     # print out the identified entities
     for ent in doc.ents:
@@ -9,7 +9,8 @@ def extract(model_test_sentence, entity_label):
             return(ent.text)
 
 if __name__ == '__main__':
-    model_test_sentence = "would you be pleased if i asked you to open the application google chrome"
-    entity_label = "APPLICATION"
-    pt = extract(model_test_sentence, entity_label)
+    model_test_sentence = "play the song from grandmaster"
+    entity_label = "MUSIC"
+    model_path = "nlu/entity_extraction/output/music_playback/model-best"
+    pt = extract(model_test_sentence, entity_label, model_path)
     print(pt)

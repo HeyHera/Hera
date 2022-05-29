@@ -1,38 +1,43 @@
 {
     "TRAINING_DATA": [
         [
-            "Please open the application terminal. Open task manager. Please launch vlc. Would you please launch terminal. Launch software. Launch the application firefox. Please launch notepad. \nKindly open weather.",
+            "please play the song from these two windows. play the song must have been the wind. please play the song in the cape god. play the music love me wrong. play wreaking ball.\nplay bad new baby. would you please play a song from dark hearts.",
             {
                 "entities": [
                     [
-                        173,
-                        180,
-                        "APPLICATION"
+                        59,
+                        82,
+                        "MUSIC"
                     ],
                     [
+                        105,
+                        120,
+                        "MUSIC"
+                    ],
+                    [
+                        137,
+                        150,
+                        "MUSIC"
+                    ],
+                    [
+                        177,
+                        189,
+                        "MUSIC"
+                    ],
+                    [
+                        225,
+                        236,
+                        "MUSIC"
+                    ],
+                    [
+                        157,
+                        170,
+                        "MUSIC"
+                    ],
+                    [
+                        26,
                         43,
-                        55,
-                        "APPLICATION"
-                    ],
-                    [
-                        71,
-                        74,
-                        "APPLICATION"
-                    ],
-                    [
-                        117,
-                        125,
-                        "APPLICATION"
-                    ],
-                    [
-                        28,
-                        36,
-                        "APPLICATION"
-                    ],
-                    [
-                        100,
-                        108,
-                        "APPLICATION"
+                        "MUSIC"
                     ]
                 ]
             }
