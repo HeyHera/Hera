@@ -1,0 +1,6 @@
+add sound on recognition
+run on startup
+seperate process for vlc
+add casual conv
+add existing design project skills
+try to add bert pdf understanding
