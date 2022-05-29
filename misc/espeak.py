@@ -25,4 +25,4 @@ def tts(text):
 
 
 if __name__ == '__main__':
-    tts("Firefox")
+    tts("It's good to be with somebody, that's excited about life.")
