@@ -80,7 +80,7 @@ while(True):
             print("Matched Skill: {}".format(matched_intent))
             skill_response = music_playback_skill.music_playback(statement)
         
-        elif statement == 'LAUNCH_APPLICATION':
+        elif matched_intent == 'LAUNCH_APPLICATION':
             print("Matched Skill: {}".format(matched_intent))
             skill_response = launch_application_skill.launch_applications(
                 statement)
