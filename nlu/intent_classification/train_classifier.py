@@ -14,7 +14,7 @@ X = list(intent_dict.keys())
 
 # y is the intent class corresponding to sentences in X
 y = list(intent_dict.values())
-print(set(y))
+# print("LABELS:\n", set(y))
 
 # Define the classifier
 clf = Pipeline(

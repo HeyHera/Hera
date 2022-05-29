@@ -9,9 +9,9 @@ def classify(str):
     # type(str) >> string
     input_list.insert(0, str)
     predicted_intents = clf.predict(input_list)
-    return(predicted_intents[0])
+    return(predicted_intents)
 
 
 if __name__ == '__main__':
-    pt = classify('play a song in random')
+    pt = classify('play strong')
     print(pt)
