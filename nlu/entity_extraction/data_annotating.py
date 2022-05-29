@@ -41,7 +41,7 @@ def structure_training_data(text, kw_list, entity_label):
 if __name__ == '__main__':
     with open(file="nlu/entity_extraction/spacy_train_text.txt", mode='r', encoding='utf-8') as spacy_train_text:
         text = spacy_train_text.read()
-    kw_list = ['terminal', 'firefox', 'google chrome', 'weather', 'calculator', 'files']
+    kw_list = ['terminal', 'firefox', 'google chrome', 'weather', 'calculator', 'files', 'prime video', 'youtube', 'wikipedia']
     entity_label = "APPLICATION"
     structure_training_data(text=text, kw_list=kw_list,
                             entity_label=entity_label)

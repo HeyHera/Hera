@@ -4,7 +4,7 @@ import json
 from spacy.tokens import DocBin
 
 # define our training data to TRAIN_DATA
-with open(file='nlu/entity_extraction/training_data.json', mode='r') as fp:
+with open(file='nlu/entity_extraction/nlu_ee_training_data.json', mode='r') as fp:
     collective_dict = json.load(fp)
 TRAIN_DATA = collective_dict['TRAINING_DATA']
 
