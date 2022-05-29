@@ -6,3 +6,5 @@ output.wav
 wake-word-detection/recordings/
 nlu/entity_extraction/output/model-*
 tts/nix/models/nix-ljspeech-stochastic-v0.1/
+nlu/entity_extraction/output/launch_applications/
+nlu/entity_extraction/output/music_playback/
