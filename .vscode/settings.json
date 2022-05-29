@@ -4,7 +4,9 @@
         "rasa",
         "scikit",
         "sklearn",
+        "sounddevice",
         "spacy",
-        "tqdm"
+        "tqdm",
+        "vosk"
     ]
 }
