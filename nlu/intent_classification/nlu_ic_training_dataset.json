@@ -21,5 +21,14 @@
     "play the song from 1984": "ALBUM_SONG",
     "would you please play a song from grandmaster": "ALBUM_SONG",
     "would you please play a song from collage": "ALBUM_SONG",
-    "play a song from for you": "ALBUM_SONG"
+    "play a song from for you": "ALBUM_SONG",
+    "": "NONE",
+    "i would like to sell random songs": "NONE",
+    "i am buying random objects": "NONE",
+    "i like playing": "NONE",
+    "do you like to play": "NONE",
+    "score corresponds to the area under": "NONE",
+    "i am singing random songs": "NONE",
+    "do you like music": "NONE",
+    "do you like songs": "NONE"
 }
