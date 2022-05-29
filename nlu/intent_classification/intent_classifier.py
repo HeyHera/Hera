@@ -1,5 +1,6 @@
 from joblib import load
 
+
 clf = load('nlu/intent_classification/models/sklearn_intent_classifier.joblib')
 
 
@@ -12,5 +13,5 @@ def classify(str):
 
 
 if __name__ == '__main__':
-    pt = classify('would you be pleased if i asked you to play a song')
+    pt = classify('play a song in random')
     print(pt)
