@@ -9,7 +9,7 @@ def classify(str):
     # type(str) >> string
     input_list.insert(0, str)
     predicted_intents = clf.predict(input_list)
-    return(predicted_intents)
+    return(predicted_intents[0])
 
 
 if __name__ == '__main__':
