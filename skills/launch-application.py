@@ -13,7 +13,7 @@ def launch_applications(command):
         "Entity_Extractor", "nlu/entity_extraction/entity_extractor.py").load_module()
 
     command = str(command).lower()
-    entity = entity_extractor_module.extract(model_test_sentence=command, entity_label="APPLICATION")
+    entity = entity_extractor_module.extract(model_test_sentence=command, entity_label="APPLICATION", model_path="nlu/entity_extraction/output/launch_applications/model-best")
     app_to_launch = entity
     application_list = ['Firefox,Web Browser', 'Google Chrome',
                         'Weather', 'Calculator', 'Terminal,Command Prompt', 'Files,Explorer']
