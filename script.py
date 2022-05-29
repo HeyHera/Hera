@@ -71,17 +71,17 @@ while(True):
         print("\n{} Skill match starting {}".format(
             '='*20, '='*20))
         
-        #POSSIBLE LABELS {'MUSIC_PLAYBACK_RANDOM_SONG', 'UNDEFINED', 'MUSIC_PLAYBACK_ALBUM_SONG', 'MUSIC_PLAYBACK_SPECIFIC_SONG', 'NO_MATCH'}
+        #POSSIBLE LABELS {'LAUNCH_APPLICATION', 'MUSIC_PLAYBACK_RANDOM_SONG','MUSIC_PLAYBACK_ALBUM_SONG', 'UNDEFINED'} etc
         if matched_intent == 'UNDEFINED':
             print("Nothing received as command")
             # PLAY AN AUDITORY ERROR BELL
         
         elif matched_intent in ['MUSIC_PLAYBACK_ALBUM_SONG', 'MUSIC_PLAYBACK_SPECIFIC_SONG', 'MUSIC_PLAYBACK_RANDOM_SONG']:
-            print("Matched: {}".format(matched_intent))
+            print("Matched Skill: {}".format(matched_intent))
             skill_response = music_playback_skill.music_playback(statement)
         
-        elif statement.startswith("launch") or statement.startswith("open"):
-            print("Matched: launch_application_skill")
+        elif statement == 'LAUNCH_APPLICATION':
+            print("Matched Skill: {}".format(matched_intent))
             skill_response = launch_application_skill.launch_applications(
                 statement)
         print("Skill response: {}" .format(skill_response))
