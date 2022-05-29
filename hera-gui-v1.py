@@ -12,28 +12,8 @@ import sys
 import os
 import matplotlib
 from PyQt5.QtGui import QIcon
-from importlib.machinery import SourceFileLoader
-import threading
+
 matplotlib.use("Qt5Agg")
-
-# LOCAL IMPORTS
-try:
-    wwd_module = SourceFileLoader(
-        "Wake-Word-Detection", "wake-word-detection/wake-word-detection.py").load_module()
-    asr_module = SourceFileLoader(
-        "Automatic-Speech-Recognition", "speech-recognition/automatic-speech-recognition.py").load_module()
-    tts_module = SourceFileLoader(
-        "Text-To-Speech", "text-to-speech/espeak.py").load_module()
-    greeting_skill = SourceFileLoader(
-        "Greeting-Skill", "skills/greetings.py").load_module()
-    music_playback_skill = SourceFileLoader(
-        "Music-Playback-Skill", "skills/music-playback.py").load_module()
-    launch_application_skill = SourceFileLoader(
-        "Launch-Application", "skills/launch-application.py").load_module()
-    print("\nLocal imports successful")
-except Exception as e:
-    print("\nLocal imports unsuccessful.\n" + str(e))
-
 
 
 # uses QAudio to obtain all the available devices on the system
@@ -60,7 +40,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # import the QT designer created ui for the application
         self.ui = uic.loadUi("main.ui", self)
         self.resize(888, 600)  # reset the size
-        self.ui.setWindowTitle('Hera Gui')
+        self.ui.setWindowTitle('Voice Plotter')
         self.ui.setWindowIcon(QIcon(os.path.join('icons', 'sound.png')))
 
         self.threadpool = QtCore.QThreadPool()
@@ -295,14 +275,8 @@ class MainWindow(QtWidgets.QMainWindow):
         except Exception as e:
             print("Error:", e)
             pass
-#My fn starts
-    def getSpeech(self):    
-        data="hi how are"
 
 
-
-    def update_speech_input(self):
-        self.getSpeech()
 class Worker(QtCore.QRunnable):
     def __init__(self, function, *args, **kwargs):
         super(Worker, self).__init__()

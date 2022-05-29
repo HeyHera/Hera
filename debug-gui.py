@@ -21,7 +21,7 @@ class gui(QMainWindow):
     def callProgram(self):
         # run the process
         # `start` takes the exec and a list of arguments
-        self.process.start('python',['-u','script.py'])
+        self.process.start('python',['-u','sample.py'])
         
 
     def keyPressEvent(self, e):
@@ -31,20 +31,24 @@ class gui(QMainWindow):
     def initUI(self):
         # Layout are better for placing widgets
         layout =  QHBoxLayout()
+        
         self.runButton =  QPushButton('Run')
         self.runButton.clicked.connect(self.callProgram)
 
         #self.enterButton =  QPushButton('Enter')
         #self.enterButton.clicked.connect(self.enterKeyEvent)
-
         self.output =  QTextEdit()
+        self.output2 =  QTextEdit()
         self.setGeometry(100, 60, 1000, 800)
         layout.addWidget(self.output)
+        layout.addWidget(self.output2)
         layout.addWidget(self.runButton)
+        
         #layout.addWidget(self.enterButton)
 
         centralWidget =  QWidget()
         centralWidget.setLayout(layout)
+        
         self.setCentralWidget(centralWidget)
 
         # QProcess object for external app
