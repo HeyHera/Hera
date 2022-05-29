@@ -8,7 +8,7 @@ try:
     asr_module = SourceFileLoader(
         "Automatic-Speech-Recognition", "speech-recognition/automatic-speech-recognition.py").load_module()
     tts_module = SourceFileLoader(
-        "Text-To-Speech", "text-to-speech/espeak.py").load_module()
+        "Text-To-Speech", "tts/speak.py").load_module()
     greeting_skill = SourceFileLoader(
         "Greeting-Skill", "skills/greetings.py").load_module()
     music_playback_skill = SourceFileLoader(
