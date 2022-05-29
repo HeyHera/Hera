@@ -1,42 +1,92 @@
 {
     "TRAINING_DATA": [
         [
-            "please play the song from these two windows. play the song must have been the wind. please play the song in the cape god. play the music love me wrong. play wreaking ball.\nplay bad new baby. would you please play a song from dark hearts.",
+            "please play the song from love me like you do.\nplay the song must have been the wind.\nplease play the song sorry.\nplay the music love me wrong.\nplay magic.\nplay bad new baby.\nwould you please play a song from dark hearts.\nplease play the song from revolver.\n\nplay the song baby.\nplease play the song in the cape god.\nplay the music do it.\nplay wreaking ball.\nplay bad new baby.\nwould you please play a song from dark hearts.\nplease play the song from these two windows.\nplay the song must have been the wind. \n\nplease play the song in the dreams.\nplay the music love me like you do.\nplay do it.\nplay baby.\nwould you please play a song from silver springs.",
             {
                 "entities": [
                     [
-                        59,
-                        82,
+                        332,
+                        337,
                         "MUSIC"
                     ],
                     [
-                        105,
-                        120,
+                        588,
+                        593,
                         "MUSIC"
                     ],
                     [
-                        137,
-                        150,
+                        161,
+                        173,
                         "MUSIC"
                     ],
                     [
-                        177,
-                        189,
+                        364,
+                        376,
                         "MUSIC"
                     ],
                     [
-                        225,
-                        236,
+                        61,
+                        84,
                         "MUSIC"
                     ],
                     [
-                        157,
-                        170,
+                        484,
+                        507,
+                        "MUSIC"
+                    ],
+                    [
+                        344,
+                        357,
+                        "MUSIC"
+                    ],
+                    [
+                        248,
+                        256,
+                        "MUSIC"
+                    ],
+                    [
+                        640,
+                        654,
+                        "MUSIC"
+                    ],
+                    [
+                        532,
+                        545,
+                        "MUSIC"
+                    ],
+                    [
+                        209,
+                        220,
+                        "MUSIC"
+                    ],
+                    [
+                        412,
+                        423,
+                        "MUSIC"
+                    ],
+                    [
+                        129,
+                        142,
+                        "MUSIC"
+                    ],
+                    [
+                        107,
+                        112,
                         "MUSIC"
                     ],
                     [
                         26,
-                        43,
+                        45,
+                        "MUSIC"
+                    ],
+                    [
+                        562,
+                        581,
+                        "MUSIC"
+                    ],
+                    [
+                        149,
+                        154,
                         "MUSIC"
                     ]
                 ]
