@@ -10,7 +10,7 @@ import os
 
 from importlib.machinery import SourceFileLoader
 foo= SourceFileLoader("asr", "speech-recognition/asr.py").load_module()
-ttsmod=SourceFileLoader("espeak", "text-to-speech/espeak.py").load_module()
+ttsmod=SourceFileLoader("espeak", "tts/speak.py").load_module()
 
 #### SETTING UP TEXT TO SPEECH ###
 engine = pyttsx3.init()

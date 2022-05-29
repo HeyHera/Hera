@@ -8,7 +8,7 @@ def launch_applications(command):
     import difflib
     from importlib.machinery import SourceFileLoader
     tts_module = SourceFileLoader(
-        "Text-To-Speech", "text-to-speech/espeak.py").load_module()
+        "Text-To-Speech", "tts/speak.py").load_module()
 
     command = str(command).lower()
     app_to_launch = ""
