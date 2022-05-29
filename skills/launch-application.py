@@ -9,9 +9,12 @@ def launch_applications(command):
     from importlib.machinery import SourceFileLoader
     tts_module = SourceFileLoader(
         "Text-To-Speech", "tts/speak.py").load_module()
+    entity_extractor_module = SourceFileLoader(
+        "Entity_Extractor", "nlu/entity_extraction/entity_extractor.py").load_module()
 
     command = str(command).lower()
-    app_to_launch = ""
+    entity = entity_extractor_module.extract(model_test_sentence=command, entity_label="APPLICATION")
+    app_to_launch = entity
     application_list = ['Firefox,Web Browser', 'Google Chrome',
                         'Weather', 'Calculator', 'Terminal,Command Prompt', 'Files,Explorer']
     app_dist = {
@@ -22,13 +25,6 @@ def launch_applications(command):
         'Terminal': 'gnome-terminal',
         'Files': 'nautilus'
     }
-    if command.startswith("open"):
-        app_to_launch = command.split("open")[1].strip().title()
-    elif command.startswith("launch"):
-        app_to_launch = command.split("launch")[1].strip().title()
-    elif app_to_launch == "":
-        tts_module.tts("Please specify the application to launch.")
-        return(2)  # 2 = Return Prompt
     closest_matched_apps = difflib.get_close_matches(
         app_to_launch, application_list, cutoff=0.4)
     if len(closest_matched_apps) != 0:
@@ -65,7 +61,7 @@ def launch_applications(command):
 
 if __name__ == '__main__':
     skill_response = None
-    skill_response = launch_applications("Open the terminal")
+    skill_response = launch_applications("Open the wikipedia")
     # spoken = launch_applications("Launch Wikipedia")
     if skill_response != None:
         if skill_response == 0:
