@@ -4,9 +4,11 @@ import threading
 # LOCAL IMPORTS
 try:
     wwd_module = SourceFileLoader(
-        "Wake-Word-Detection", "wake-word-detection/wake-word-detection.py").load_module()
+        "Wake-Word_Detection", "wake-word-detection/wake-word-detection.py").load_module()
     asr_module = SourceFileLoader(
         "Automatic-Speech-Recognition", "speech-recognition/automatic-speech-recognition.py").load_module()
+    intent_classifier_module = SourceFileLoader(
+        "Intent_Classifier_Module", "nlu/intent_classification/intent_classifier.py").load_module()
     tts_module = SourceFileLoader(
         "Text-To-Speech", "tts/speak.py").load_module()
     greeting_skill = SourceFileLoader(
@@ -50,22 +52,34 @@ while(True):
             print("\n{} Automatic Speech Recognition initializing {}".format(
                 '='*20, '='*20))
             spoken = asr_module.asr()
+            spoken = str(spoken).lower()
             print(spoken)
         except Exception as e:
             print(
                 "\nError encountered. Couldn't connect with Automatic Speech Recognition.\n" + str(e))
+        
+        
+        # PASSING THE COMMAND TO INTENT CLASSIFIER
+        print("\n{} Classifying Intent {}".format(
+            '='*20, '='*20))
+        matched_intent = intent_classifier_module.classify(spoken)
+        print("Matched Intent: {}".format(matched_intent))
 
-        # MATCHING THE COMMAND WITH CORRESPONDING SKILL
+        # MATCHING THE INTENT WITH CORRESPONDING SKILL
         statement = spoken.lower()
         skill_response = None
         print("\n{} Skill match starting {}".format(
             '='*20, '='*20))
-        if statement == "":
+        
+        #POSSIBLE LABELS {'MUSIC_PLAYBACK_RANDOM_SONG', 'UNDEFINED', 'MUSIC_PLAYBACK_ALBUM_SONG', 'MUSIC_PLAYBACK_SPECIFIC_SONG', 'NO_MATCH'}
+        if matched_intent == 'UNDEFINED':
             print("Nothing received as command")
             # PLAY AN AUDITORY ERROR BELL
-        if "play" in statement or "music" in statement or "song" in statement:
-            print("Matched: music_playback_skill")
+        
+        elif matched_intent in ['MUSIC_PLAYBACK_ALBUM_SONG', 'MUSIC_PLAYBACK_SPECIFIC_SONG', 'MUSIC_PLAYBACK_RANDOM_SONG']:
+            print("Matched: {}".format(matched_intent))
             skill_response = music_playback_skill.music_playback(statement)
+        
         elif statement.startswith("launch") or statement.startswith("open"):
             print("Matched: launch_application_skill")
             skill_response = launch_application_skill.launch_applications(
