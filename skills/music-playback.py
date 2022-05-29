@@ -83,7 +83,7 @@ def music_playback(command):
 
 if __name__ == '__main__':
     skill_response = None
-    skill_response = music_playback("play dusk till dawn")
+    skill_response = music_playback("i like to dance in random songs")
     # skill_response = music_playback("Play the song in the end")
     if skill_response != None:
         if skill_response == 0:
