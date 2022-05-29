@@ -1,6 +1,7 @@
 add sound on recognition
 run on startup
-seperate process for vlc
-add casual conv
+separate process for vlc
+add casual conversation
 add existing design project skills
 try to add bert pdf understanding
+improve wake word detection
