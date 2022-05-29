@@ -22,7 +22,6 @@
     "play the song perfect": "MUSIC_PLAYBACK_SPECIFIC_SONG",
     "play shape of you": "MUSIC_PLAYBACK_SPECIFIC_SONG",
     "play the song shape of you": "MUSIC_PLAYBACK_SPECIFIC_SONG",
-    "play for you": "MUSIC_PLAYBACK_SPECIFIC_SONG",
     "play in the end": "MUSIC_PLAYBACK_SPECIFIC_SONG",
     "play the song memories": "MUSIC_PLAYBACK_SPECIFIC_SONG",
     "play the song bounce": "MUSIC_PLAYBACK_SPECIFIC_SONG",
@@ -39,8 +38,7 @@
     "please play the song from the album grandmaster": "MUSIC_PLAYBACK_ALBUM_SONG",
     "play the song from 1984": "MUSIC_PLAYBACK_ALBUM_SONG",
     "would you please play a song from she": "MUSIC_PLAYBACK_ALBUM_SONG",
-    "would you please play a song from collage": "MUSIC_PLAYBACK_ALBUM_SONG",
-    "play a song from for you": "MUSIC_PLAYBACK_ALBUM_SONG",
+    "would you please play a song from college": "MUSIC_PLAYBACK_ALBUM_SONG",
     "i would like to sell random songs": "MUSIC_PLAYBACK_NO_MATCH",
     "i am buying random objects": "MUSIC_PLAYBACK_NO_MATCH",
     "flare a random song": "MUSIC_PLAYBACK_NO_MATCH",
@@ -117,5 +115,17 @@
     "todays news": "CASUAL_HOW_ARE_YOU_NO_MATCH",
     "are you today": "CASUAL_HOW_ARE_YOU_NO_MATCH",
     "how are you doing this": "CASUAL_HOW_ARE_YOU_NO_MATCH",
-    "today is wonderful": "CASUAL_HOW_ARE_YOU_NO_MATCH"    
+    "today is wonderful": "CASUAL_HOW_ARE_YOU_NO_MATCH",
+    
+    "so when magic": "NOISE",
+    "this is heaven": "NOISE",
+    "slay the song": "NOISE",
+    "clay the song": "NOISE",
+    "are you married": "NOISE",
+    "in later part": "NOISE",
+    "from this place to another": "NOISE",
+    "magical mystery lake": "NOISE",
+    "from india": "NOISE",
+    "from this place": "NOISE",
+    "from him": "NOISE"
 }

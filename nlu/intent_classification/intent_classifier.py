@@ -13,5 +13,5 @@ def classify(str):
 
 
 if __name__ == '__main__':
-    pt = classify('play strong')
+    pt = classify('open up the terminal')
     print(pt)
