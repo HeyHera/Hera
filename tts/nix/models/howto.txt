@@ -1,0 +1,1 @@
+Unzip models here. Use nix-ljspeech-stochastic-v0.1

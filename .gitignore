@@ -5,3 +5,4 @@ speech-recognition/vosk-models/*
 output.wav
 wake-word-detection/recordings/
 nlu/entity_extraction/output/model-*
+tts/nix/models/nix-ljspeech-stochastic-v0.1/
