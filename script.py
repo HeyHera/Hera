@@ -78,7 +78,7 @@ while(True):
         
         elif matched_intent in ['MUSIC_PLAYBACK_ALBUM_SONG', 'MUSIC_PLAYBACK_SPECIFIC_SONG', 'MUSIC_PLAYBACK_RANDOM_SONG']:
             print("Matched Skill: {}".format(matched_intent))
-            skill_response = music_playback_skill.music_playback(statement)
+            skill_response = music_playback_skill.music_playback(statement, matched_intent)
         
         elif matched_intent == 'LAUNCH_APPLICATION':
             print("Matched Skill: {}".format(matched_intent))
