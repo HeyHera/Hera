@@ -13,5 +13,5 @@ def classify(str):
 
 
 if __name__ == '__main__':
-    pt = classify('open up the terminal')
+    pt = classify('name a verb')
     print(pt)

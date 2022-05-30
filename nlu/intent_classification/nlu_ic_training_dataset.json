@@ -132,14 +132,23 @@
     "what is your name": "CASUAL_WHAT_IS_YOUR_NAME",
     "say your name please": "CASUAL_WHAT_IS_YOUR_NAME",
     "your name please": "CASUAL_WHAT_IS_YOUR_NAME",
+    "your good name please": "CASUAL_WHAT_IS_YOUR_NAME",
     "say your name": "CASUAL_WHAT_IS_YOUR_NAME",
     "can you say your name": "CASUAL_WHAT_IS_YOUR_NAME",
     "tell me your name": "CASUAL_WHAT_IS_YOUR_NAME",
     "what is your age": "CASUAL_WHAT_IS_YOUR_NAME_NO_MATCH",
     "say your age": "CASUAL_WHAT_IS_YOUR_NAME_NO_MATCH",
     "say your place":  "CASUAL_WHAT_IS_YOUR_NAME_NO_MATCH",
+    "name a verb":  "CASUAL_WHAT_IS_YOUR_NAME_NO_MATCH",
+    "name a song":  "CASUAL_WHAT_IS_YOUR_NAME_NO_MATCH",
+    "name a place":  "CASUAL_WHAT_IS_YOUR_NAME_NO_MATCH",
     
     "who created you": "CASUAL_WHO_CREATED_YOU",
     "who built you": "CASUAL_WHO_CREATED_YOU",
- 
+    "who created tajmahal": "CASUAL_WHO_CREATED_YOU_NO_MATCH",
+    "who built tajmahal": "CASUAL_WHO_CREATED_YOU_NO_MATCH",
+    "who built paris": "CASUAL_WHO_CREATED_YOU_NO_MATCH",
+    "who created paris": "CASUAL_WHO_CREATED_YOU_NO_MATCH",
+    "who built america": "CASUAL_WHO_CREATED_YOU_NO_MATCH",
+    "who created america": "CASUAL_WHO_CREATED_YOU_NO_MATCH"
 }
