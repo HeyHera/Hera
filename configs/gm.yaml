@@ -1,3 +1,6 @@
 ---
 Directories:
-  Music: "~/Music"
+  Music: "~/Music",
+  Downloads: "~/Downloads",
+  Documents: "~/Documents",
+  Picture: "~/Pictures"
