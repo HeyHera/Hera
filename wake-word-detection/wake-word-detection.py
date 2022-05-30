@@ -28,8 +28,8 @@ def listener():
         mfcc_processed = np.mean(mfcc.T, axis=0)
         y = mfcc_processed
         prediction = model.predict(np.expand_dims(y, axis=0))
-        write('wake-word-detection/recordings/output'+str(pass_number) +
-              '.wav', fs, myrecording)  # Save as WAV file for debugging
+        #write('wake-word-detection/recordings/output'+str(pass_number) +
+        #      '.wav', fs, myrecording)  # Save as WAV file for debugging
         if prediction[:, 1] != 0.0:
             print("Wake word detected")
             break

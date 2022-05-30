@@ -21,7 +21,7 @@ class gui(QMainWindow):
     def callProgram(self):
         # run the process
         # `start` takes the exec and a list of arguments
-        self.process.start('python',['-u','sample.py'])
+        self.process.start('python',['-u','script.py'])
         
 
     def keyPressEvent(self, e):

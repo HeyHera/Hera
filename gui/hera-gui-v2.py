@@ -210,8 +210,15 @@ class HeraCtrl:
 
     def _calculateResult(self):
         """Evaluate expressions."""
-        result = self._evaluate(expression=self._view.displayText())
-        self._view.setDisplayText(result)
+        #result = self._evaluate(expression=self._view.displayText())
+        
+        result="Hello"
+        print("result1",result)
+        while(True):
+            print("result2",result)
+            self._view.setDisplayText(result)
+            time.sleep(5)
+            self._view.clearDisplay
 
     def _buildExpression(self, sub_exp):
         """Build expression."""

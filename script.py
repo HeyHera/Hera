@@ -36,11 +36,11 @@ while(True):
         print("An error occurred while starting Wake Word Detection thread")
 
     # WHILE WAKE WORD IS NOT WORKING
-    #start_char = input("Press Enter to continue: ")
-    #if start_char != "":
-    #    print("Exiting")
-    #    exit()
-    #else:
+    start_char = input("Press Enter to continue: ")
+    if start_char != "":
+        print("Exiting")
+        exit()
+    else:
 
         # CALLING TEXT-TO-SPEECH FOR GREETING THE USER
         tts_module.tts(greeting_skill.greeting())
