@@ -119,8 +119,8 @@
     
     "so when magic": "NOISE",
     "this is heaven": "NOISE",
-    "slay the song": "NOISE",
-    "clay the song": "NOISE",
+    "slay the song": "MUSIC_PLAYBACK_NO_MATCH",
+    "clay the song": "MUSIC_PLAYBACK_NO_MATCH",
     "are you married": "NOISE",
     "in later part": "NOISE",
     "from this place to another": "NOISE",
