@@ -1,52 +1,59 @@
-play the song magic.
-play the song in the end.
-please play the song memories.
-play animals.
-play the song animals.
-play wolves.
-play the song wolves.
-play perfect.
-play the song perfect.
-play the music animals.
-play shape of you.
-play the song from divide
-please play a song from revolver.
-please play the song in cape god.
-play a song from dark hearts.
-play the song baby.
+copy the latest file from downloads to documents.
+copy the latest file from music to downloads.
+copy the latest file from documents to pictures.
+copy the latest file from documents to music.
 
-play the song baby.
-play the song shape of you.
-please play the song animals.
-play the music love me like you do.
-play the song battle symphony.
-play house music all night long.
-play the song wolves.
-play the song do it.
-play perfect.
-play pigeons.
-please play a song from cape god.
-please play the song in revolver.
-please play the song in pet sounds.
-play a song hello.
-would you please play the song from grandmaster.
-would you be kind enough to play a song from fifty shades of grey.
-would you please play the song do it.
+copy the latest file from music to downloads.
+copy the latest file from pictures to downloads.
+copy the latest file from home to pictures.
+copy the latest file from documents to documents.
 
-play the song grandmaster.
-play the song for you.
-please play the song animals.
-play the music love me like you do.
-play the song love me like you do.
-play house music all night long.
-play the song she.
-play the song wreaking ball.
-would you be kind enough to play the song battle symphony.
-play the song house music all night long.
-play the song from revival.
-play vibes.
-please play a song from 1984.
-please play the song in college.
-please play the song in pet sounds.
-play the song from bounce
-play a song from fifty shades of grey.
+move the latest file from downloads to documents.
+move the latest file from music to downloads.
+move the latest file from documents to config.
+move the latest file from documents to music.
+
+move the latest file from music to downloads.
+move the latest file from pictures to downloads.
+move the latest file from config to home.
+move the latest file from documents to documents.
+
+delete the latest file from downloads.
+delete the latest file from documents.
+delete the latest file from music.
+delete the latest file from pictures.
+
+delete the latest file from documents.
+delete the latest file from documents.
+delete the latest file from music.
+delete the latest file from pictures.
+
+copy the latest file from new folder to documents.
+copy the latest file from music to videos.
+copy the latest file from documents to new folder.
+copy the latest file from new folder to music.
+
+copy the latest file from videos to downloads.
+copy the latest file from pictures to videos.
+copy the latest file from config to pictures.
+copy the latest file from documents to local.
+
+move the latest file from local to documents.
+move the latest file from videos to downloads.
+move the latest file from documents to local.
+move the latest file from videos to music.
+
+move the latest file from new folder to downloads.
+move the latest file from pictures to new folder.
+move the latest file from videos to new folder.
+move the latest file from new folder to documents.
+
+delete the latest file from new folder.
+delete the latest file from videos.
+delete the latest file from new folder.
+delete the latest file from local.
+
+delete the latest file from documents.
+delete the latest file from new folder.
+delete the latest file from local.
+delete the latest file from music.

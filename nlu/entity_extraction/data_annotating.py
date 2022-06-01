@@ -41,10 +41,7 @@ def structure_training_data(text, kw_list, entity_label):
 if __name__ == '__main__':
     with open(file="nlu/entity_extraction/spacy_train_text.txt", mode='r', encoding='utf-8') as spacy_train_text:
         text = spacy_train_text.read()
-    kw_list = ['magic', 'in the end', 'memories', 'animals', 'wolves', 'perfect', 'shape of you', 'for you', 'bounce', 'wreaking ball', \
-                'vibes', 'battle symphony', 'grandmaster', 'fifty shades of grey', 'revival', 'divide', 'love', '1984', 'she', 'college',\
-                'baby', 'love me like you do', 'house music all night long', 'do it', 'pigeons', 'perfect', 'cape god', 'revolver', 'pet sounds', \
-                'hello', 'she', '1984', 'bounce']
+    kw_list = ['from downloads to documents', 'from music to downloads', 'from documents to pictures', ]
     kw_list = set(kw_list)
     entity_label = "MUSIC"
     structure_training_data(text=text, kw_list=kw_list,

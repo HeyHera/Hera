@@ -1,23 +1,14 @@
-please play the song from love me like you do.
-play the song must have been the wind.
-please play the song sorry.
-play the music love me wrong.
-play magic.
-play bad new baby.
-would you please play a song from dark hearts.
-please play the song from revolver.
+copy the latest file from new folder to downloads.
+copy the latest file from pictures to config.
+copy the latest file from videos to pictures.
+copy the latest file from documents to local.
 
-play the song baby.
-please play the song in the cape god.
-play the music do it.
-play wreaking ball.
-play bad new baby.
-would you please play a song from dark hearts.
-please play the song from these two windows.
-play the song must have been the wind. 
+move the latest file from local to documents.
+move the latest file from home to downloads.
+move the latest file from documents to local.
+move the latest file from videos to music.
 
-please play the song in the dreams.
-play the music love me like you do.
-play do it.
-play baby.
-would you please play a song from silver springs.
+delete the latest file from documents.
+delete the latest file from new folder.
+delete the latest file from home.
+delete the latest file from music.
