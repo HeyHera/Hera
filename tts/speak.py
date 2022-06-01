@@ -31,4 +31,4 @@ def tts(text):
     os.remove(wav_file_path+"voice.wav")
 
 if __name__ == '__main__':
-    tts("I'll always love you 'cause we grew up together and you helped make me who I am. I just wanted you to know there will be a piece of you in me always, and I'm grateful for that. Whatever someone you become, and wherever you are in the world, I'm sending you love. You're my friend to the end")
+    tts("Its good to be with somebody, who is excited about life")
