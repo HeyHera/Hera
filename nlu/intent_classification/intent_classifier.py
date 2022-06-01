@@ -13,5 +13,5 @@ def classify(str):
 
 
 if __name__ == '__main__':
-    pt = classify('delete the latest file from downloads')
+    pt = classify('delete the latest file in downloads')
     print(pt)
