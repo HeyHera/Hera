@@ -18,15 +18,15 @@ move the latest file from pictures to downloads.
 move the latest file from config to home.
 move the latest file from documents to documents.
 
-delete the latest file from downloads.
-delete the latest file from documents.
-delete the latest file from music.
-delete the latest file from pictures.
+delete the latest file in downloads.
+delete the latest file in documents.
+delete the latest file in music.
+delete the latest file in pictures.
 
-delete the latest file from documents.
-delete the latest file from documents.
-delete the latest file from music.
-delete the latest file from pictures.
+delete the latest file in documents.
+delete the latest file in documents.
+delete the latest file in music.
+delete the latest file in pictures.
 
 copy the latest file from new folder to documents.
 copy the latest file from music to videos.
@@ -48,12 +48,12 @@ move the latest file from pictures to new folder.
 move the latest file from videos to new folder.
 move the latest file from new folder to documents.
 
-delete the latest file from new folder.
-delete the latest file from videos.
-delete the latest file from new folder.
-delete the latest file from local.
+delete the latest file in new folder.
+delete the latest file in videos.
+delete the latest file in new folder.
+delete the latest file in local.
 
-delete the latest file from documents.
-delete the latest file from new folder.
-delete the latest file from local.
-delete the latest file from music.
+delete the latest file in documents.
+delete the latest file in new folder.
+delete the latest file in local.
+delete the latest file in music.

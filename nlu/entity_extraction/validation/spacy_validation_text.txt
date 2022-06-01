@@ -8,7 +8,7 @@ move the latest file from home to downloads.
 move the latest file from documents to local.
 move the latest file from videos to music.
 
-delete the latest file from documents.
-delete the latest file from new folder.
-delete the latest file from home.
-delete the latest file from music.
+delete the latest file in documents.
+delete the latest file in new folder.
+delete the latest file in home.
+delete the latest file in music.

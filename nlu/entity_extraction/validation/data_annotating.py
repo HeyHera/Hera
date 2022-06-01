@@ -40,10 +40,10 @@ def structure_training_data(text, kw_list, entity_label):
 if __name__ == '__main__':
     with open(file="nlu/entity_extraction/validation/spacy_validation_text.txt", mode='r', encoding='utf-8') as spacy_train_text:
         text = spacy_train_text.read()
-    kw_list = ['love me like you do', 'must have been the wind', 'sorry', 'love me wrong', 'magic', 'do it', 'wreaking ball', 'revolver', 'bad new baby', 'dark hearts', \
-                'revolver', 'in the dreams', 'silver springs']
+    kw_list = ['from new folder to downloads', 'from pictures to config', 'from videos to pictures', 'from documents to local', 'from local to documents', 'from home to downloads', 'from videos to music', \
+                'in documents', 'in new folder', 'in home', 'in music']
     kw_list = set(kw_list)
-    entity_label = "MUSIC"
+    entity_label = "FILE_MANIPULATION"
     structure_training_data(text=text, kw_list=kw_list,
                             entity_label=entity_label)
     print("\n{} Result {}".format("="*80, "="*80))

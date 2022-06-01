@@ -41,9 +41,11 @@ def structure_training_data(text, kw_list, entity_label):
 if __name__ == '__main__':
     with open(file="nlu/entity_extraction/spacy_train_text.txt", mode='r', encoding='utf-8') as spacy_train_text:
         text = spacy_train_text.read()
-    kw_list = ['from downloads to documents', 'from music to downloads', 'from documents to pictures', ]
+    kw_list = ['from downloads to documents', 'from music to downloads', 'from documents to pictures', 'from documents to music', 'from music to downloads', 'from pictures to downloads', 'from home to pictures', 'from documents to documents', 'from documents to config', \
+                'from config to home', 'in downloads', 'in documents', 'in pictures', 'from new folder to documents', 'from music to videos', 'from documents to new folder', 'from new folder to music', 'from videos to downloads', 'from pictures to videos', 'from config to pictures', 'from documents to local', \
+                    'from local to documents', 'from videos to downloads', 'from videos to music', 'from new folder to downloads', 'from pictures to new folder', 'from videos to new folder', 'in new folder', 'in videos', 'in new folder', 'in local']
     kw_list = set(kw_list)
-    entity_label = "MUSIC"
+    entity_label = "FILE_MANIPULATION"
     structure_training_data(text=text, kw_list=kw_list,
                             entity_label=entity_label)
     print("\n{} Result {}".format("="*80, "="*80))

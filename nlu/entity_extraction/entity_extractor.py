@@ -9,8 +9,8 @@ def extract(model_test_sentence, entity_label, model_path):
             return(ent.text)
 
 if __name__ == '__main__':
-    model_test_sentence = "please open notepad"
-    entity_label = "APPLICATION"
-    model_path = "nlu/entity_extraction/output/launch_applications/model-best"
+    model_test_sentence = "delete the latest file from downloads"
+    entity_label = "FILE_MANIPULATION"
+    model_path = "nlu/entity_extraction/output/file_manipulation/model-best"
     pt = extract(model_test_sentence, entity_label, model_path)
     print(pt)

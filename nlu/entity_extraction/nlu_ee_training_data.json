@@ -1,268 +1,233 @@
 {
     "TRAINING_DATA": [
         [
-            "play the song magic.\nplay the song in the end.\nplease play the song memories.\nplay animals.\nplay the song animals.\nplay wolves.\nplay the song wolves.\nplay perfect.\nplay the song perfect.\nplay the music animals.\nplay shape of you.\nplay the song from divide\nplease play a song from revolver.\nplease play the song in cape god.\nplay a song from dark hearts.\nplay the song baby.\n\nplay the song baby.\nplay the song shape of you.\nplease play the song animals.\nplay the music love me like you do.\nplay the song battle symphony.\nplay house music all night long.\nplay the song wolves.\nplay the song do it.\nplay perfect.\nplay pigeons.\nplease play a song from cape god.\nplease play the song in revolver.\nplease play the song in pet sounds.\nplay a song hello.\nwould you please play the song from grandmaster.\nwould you be kind enough to play a song from fifty shades of grey.\nwould you please play the song do it.\n\nplay the song grandmaster.\nplay the song for you.\nplease play the song animals.\nplay the music love me like you do.\nplay the song love me like you do.\nplay house music all night long.\nplay the song she.\nplay the song wreaking ball.\nwould you be kind enough to play the song battle symphony.\nplay the song house music all night long.\nplay the song from revival.\nplay vibes.\nplease play a song from 1984.\nplease play the song in college.\nplease play the song in pet sounds.\nplay the song from bounce\nplay a song from fifty shades of grey.",
+            "copy the latest file from downloads to documents.\ncopy the latest file from music to downloads.\ncopy the latest file from documents to pictures.\ncopy the latest file from documents to music.\n\ncopy the latest file from music to downloads.\ncopy the latest file from pictures to downloads.\ncopy the latest file from home to pictures.\ncopy the latest file from documents to documents.\n\nmove the latest file from downloads to documents.\nmove the latest file from music to downloads.\nmove the latest file from documents to config.\nmove the latest file from documents to music.\n\nmove the latest file from music to downloads.\nmove the latest file from pictures to downloads.\nmove the latest file from config to home.\nmove the latest file from documents to documents.\n\ndelete the latest file in downloads.\ndelete the latest file in documents.\ndelete the latest file in music.\ndelete the latest file in pictures.\n\ndelete the latest file in documents.\ndelete the latest file in documents.\ndelete the latest file in music.\ndelete the latest file in pictures.\n\ncopy the latest file from new folder to documents.\ncopy the latest file from music to videos.\ncopy the latest file from documents to new folder.\ncopy the latest file from new folder to music.\n\ncopy the latest file from videos to downloads.\ncopy the latest file from pictures to videos.\ncopy the latest file from config to pictures.\ncopy the latest file from documents to local.\n\nmove the latest file from local to documents.\nmove the latest file from videos to downloads.\nmove the latest file from documents to local.\nmove the latest file from videos to music.\n\nmove the latest file from new folder to downloads.\nmove the latest file from pictures to new folder.\nmove the latest file from videos to new folder.\nmove the latest file from new folder to documents.\n\ndelete the latest file in new folder.\ndelete the latest file in videos.\ndelete the latest file in new folder.\ndelete the latest file in local.\n\ndelete the latest file in documents.\ndelete the latest file in new folder.\ndelete the latest file in local.\ndelete the latest file in music.",
             {
                 "entities": [
                     [
-                        314,
-                        322,
-                        "MUSIC"
-                    ],
-                    [
-                        648,
-                        656,
-                        "MUSIC"
-                    ],
-                    [
-                        83,
-                        90,
-                        "MUSIC"
-                    ],
-                    [
-                        106,
-                        113,
-                        "MUSIC"
-                    ],
-                    [
-                        202,
-                        209,
-                        "MUSIC"
-                    ],
-                    [
-                        444,
-                        451,
-                        "MUSIC"
-                    ],
-                    [
-                        973,
-                        980,
-                        "MUSIC"
-                    ],
-                    [
-                        1100,
-                        1103,
-                        "MUSIC"
-                    ],
-                    [
-                        615,
-                        622,
-                        "MUSIC"
-                    ],
-                    [
-                        249,
-                        255,
-                        "MUSIC"
-                    ],
-                    [
-                        716,
-                        726,
-                        "MUSIC"
-                    ],
-                    [
-                        1362,
-                        1372,
-                        "MUSIC"
-                    ],
-                    [
-                        1268,
-                        1273,
-                        "MUSIC"
-                    ],
-                    [
                         783,
-                        794,
-                        "MUSIC"
+                        795,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        916,
+                        1587,
+                        1607,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        21,
+                        48,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        403,
+                        430,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        1262,
+                        1286,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        1494,
+                        1518,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        1120,
+                        1140,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        499,
+                        523,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        166,
+                        189,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        546,
+                        569,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        117,
+                        143,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        1448,
+                        1471,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        1834,
+                        1847,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        1906,
+                        1919,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        2015,
+                        2028,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        820,
+                        832,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
                         927,
-                        "MUSIC"
+                        939,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        525,
-                        551,
-                        "MUSIC"
+                        964,
+                        976,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        1058,
-                        1084,
-                        "MUSIC"
+                        1978,
+                        1990,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        1207,
-                        1233,
-                        "MUSIC"
+                        1401,
+                        1424,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        1393,
-                        1399,
-                        "MUSIC"
+                        1541,
+                        1564,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        68,
-                        76,
-                        "MUSIC"
+                        1732,
+                        1757,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        368,
-                        372,
-                        "MUSIC"
+                        890,
+                        901,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        389,
-                        393,
-                        "MUSIC"
+                        1034,
+                        1045,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        740,
-                        745,
-                        "MUSIC"
+                        1214,
+                        1238,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        468,
-                        487,
-                        "MUSIC"
+                        1944,
+                        1952,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        997,
-                        1016,
-                        "MUSIC"
+                        2053,
+                        2061,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        1032,
-                        1051,
-                        "MUSIC"
+                        352,
+                        379,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        503,
-                        518,
-                        "MUSIC"
+                        730,
+                        757,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        1176,
+                        71,
+                        94,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        213,
+                        236,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        453,
+                        476,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        593,
+                        616,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        1872,
+                        1881,
+                        "FILE_MANIPULATION"
+                    ],
+                    [
+                        1163,
                         1191,
-                        "MUSIC"
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        280,
-                        288,
-                        "MUSIC"
+                        1355,
+                        1378,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        682,
-                        690,
-                        "MUSIC"
+                        1631,
+                        1659,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        1299,
-                        1303,
-                        "MUSIC"
+                        1309,
+                        1332,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        216,
-                        228,
-                        "MUSIC"
+                        259,
+                        285,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        409,
-                        421,
-                        "MUSIC"
+                        639,
+                        665,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        120,
-                        126,
-                        "MUSIC"
+                        308,
+                        329,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        142,
-                        148,
-                        "MUSIC"
+                        1069,
+                        1097,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        567,
-                        573,
-                        "MUSIC"
+                        1780,
+                        1808,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        1329,
-                        1336,
-                        "MUSIC"
+                        688,
+                        707,
+                        "FILE_MANIPULATION"
                     ],
                     [
-                        468,
-                        472,
-                        "MUSIC"
-                    ],
-                    [
-                        997,
-                        1001,
-                        "MUSIC"
-                    ],
-                    [
-                        1032,
-                        1036,
-                        "MUSIC"
-                    ],
-                    [
-                        841,
-                        861,
-                        "MUSIC"
-                    ],
-                    [
-                        1417,
-                        1437,
-                        "MUSIC"
-                    ],
-                    [
-                        589,
-                        594,
-                        "MUSIC"
-                    ],
-                    [
-                        894,
-                        899,
-                        "MUSIC"
-                    ],
-                    [
-                        14,
-                        19,
-                        "MUSIC"
-                    ],
-                    [
-                        1254,
-                        1261,
-                        "MUSIC"
-                    ],
-                    [
-                        943,
-                        950,
-                        "MUSIC"
-                    ],
-                    [
-                        35,
-                        45,
-                        "MUSIC"
-                    ],
-                    [
-                        155,
-                        162,
-                        "MUSIC"
-                    ],
-                    [
-                        178,
-                        185,
-                        "MUSIC"
-                    ],
-                    [
-                        601,
-                        608,
-                        "MUSIC"
-                    ],
-                    [
-                        1119,
-                        1132,
-                        "MUSIC"
+                        1682,
+                        1709,
+                        "FILE_MANIPULATION"
                     ]
                 ]
             }
