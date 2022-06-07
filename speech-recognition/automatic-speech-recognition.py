@@ -30,7 +30,7 @@ def asr():
     with sd.RawInputStream(samplerate=samplerate, blocksize=8000, device=None, dtype='int16',
                            channels=1, callback=callback):
         # int16: 16-bit audio format
-        print("Press Ctrl+C to stop the recording")
+        print("I'M LISTENING")
         # Audio in wav mono format
         rec = vosk.KaldiRecognizer(model, samplerate)
         spoken_words = []
