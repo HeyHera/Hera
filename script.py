@@ -26,23 +26,22 @@ main_pass_no = 0
 while(True):
     main_pass_no += 1
     print("\n[__main__] Pass #{}".format(main_pass_no))
-    try:
-        # CALLING WAKE-WORD-DETECTION IN A SEPARATE THREAD
-        print("\n{} Wake Word Detection thread starting {}".format(
-            '='*20, '='*20))
-        wwd_thread = threading.Thread(
-            target=wwd_module.listener(), name="Wake-Word-Detection-Thread")
-        wwd_thread.start()
-        wwd_thread.join()  # WAITING wwd_thread TO STOP EXECUTING
-    except Exception as e:
-        print("An error occurred while starting Wake Word Detection thread")
-
-    # WHILE WAKE WORD IS NOT WORKING
     start_char = input("Press Enter to continue: ")
     if start_char != "":
         print("Exiting")
         exit()
     else:
+        try:
+            # CALLING WAKE-WORD-DETECTION IN A SEPARATE THREAD
+            print("\n{} Wake Word Detection thread starting {}".format(
+                '='*20, '='*20))
+            wwd_thread = threading.Thread(
+                target=wwd_module.listener(), name="Wake-Word-Detection-Thread")
+            wwd_thread.start()
+            wwd_thread.join()  # WAITING wwd_thread TO STOP EXECUTING
+        except Exception as e:
+            print("An error occurred while starting Wake Word Detection thread")
+
 
         # CALLING TEXT-TO-SPEECH FOR GREETING THE USER
         tts_module.tts(greeting_skill.greeting())
@@ -53,7 +52,7 @@ while(True):
                 '='*20, '='*20))
             spoken = asr_module.asr()
             spoken = str(spoken).lower()
-            print(spoken)
+            # print(spoken)
         except Exception as e:
             print(
                 "\nError encountered. Couldn't connect with Automatic Speech Recognition.\n" + str(e))
