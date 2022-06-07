@@ -6,6 +6,7 @@ asttokens==2.0.5
 astunparse==1.6.3
 attrs==21.4.0
 audioread==2.1.9
+autopep8==1.6.0
 backcall==0.2.0
 beautifulsoup4==4.11.1
 bleach==5.0.0
@@ -98,6 +99,7 @@ ptyprocess==0.7.0
 pure-eval==0.2.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
+pycodestyle==2.8.0
 pycparser==2.21
 pydantic==1.8.2
 Pygments==2.12.0
@@ -144,6 +146,7 @@ terminado==0.15.0
 thinc==8.0.16
 threadpoolctl==3.1.0
 tinycss2==1.1.1
+toml==0.10.2
 tornado==6.1
 tqdm==4.64.0
 traitlets==5.2.1.post0
