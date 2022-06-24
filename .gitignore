@@ -1,6 +1,6 @@
 env/
-speech-recognition/vosk-api/*
-speech-recognition/vosk-models/*
+automatic_speech_recognition/vosk-api/*
+automatic_speech_recognition/vosk-models/*
 **/__pycache__/
 output.wav
 wake_word_detection/recordings/

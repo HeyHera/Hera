@@ -10,7 +10,7 @@ q = queue.Queue()
 device_info = sd.query_devices(device=None, kind='input')
 samplerate = int(device_info['default_samplerate'])
 
-model_path = "speech-recognition/vosk-models/vosk-model-en-in-0.4"
+model_path = "automatic_speech_recognition/vosk-models/vosk-model-en-in-0.4"
 if not os.path.exists(model_path):
     print(
         "Please download a model for your language from https://alphacephei.com/vosk/models.")

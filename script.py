@@ -4,8 +4,7 @@ import threading
 # LOCAL IMPORTS
 try:
     import wake_word_detection.wake_word_detection_script as wwd_module
-    asr_module = SourceFileLoader(
-        "Automatic-Speech-Recognition", "speech-recognition/automatic-speech-recognition.py").load_module()
+    import automatic_speech_recognition.automatic_speech_recognition_script as asr_module
     intent_classifier_module = SourceFileLoader(
         "Intent_Classifier_Module", "nlu/intent_classification/intent_classifier.py").load_module()
     tts_module = SourceFileLoader(
@@ -51,7 +50,7 @@ while(True):
                 '='*20, '='*20))
             spoken = asr_module.asr()
             spoken = str(spoken).lower()
-            # print(spoken)
+            print(spoken)
         except Exception as e:
             print(
                 "\nError encountered. Couldn't connect with Automatic Speech Recognition.\n" + str(e))
