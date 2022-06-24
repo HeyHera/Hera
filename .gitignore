@@ -11,8 +11,5 @@ wake_word_detection/repository/background_sound/
 wake_word_detection/repository/final_audio_data_csv/
 
 nlu/entity_extraction/output/*/
-# nlu/entity_extraction/output/launch_applications/
-# nlu/entity_extraction/output/file_manipulation/
-# nlu/entity_extraction/output/music_playback/
 
 tts/nix/models/nix-ljspeech-stochastic-v0.1/
