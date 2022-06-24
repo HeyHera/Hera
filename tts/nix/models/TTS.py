@@ -1,14 +1,11 @@
 import os
 import pickle
 import timeit
-from importlib.machinery import SourceFileLoader
 
 import numpy as np
 import onnxruntime as ort
 
-# from nix.tokenizers.tokenizer_en import NixTokenizerEN
-NixTokenizerEN_module = SourceFileLoader(
-        "NixTokenizerEN-Module", "tts/nix/tokenizers/tokenizer_en.py").load_module()
+from nix.tokenizers.tokenizer_en import NixTokenizerEN
 
 class NixTTSInference:
 
@@ -17,7 +14,7 @@ class NixTTSInference:
         model_dir,
     ):
         # Load tokenizer
-        self.tokenizer = NixTokenizerEN_module.NixTokenizerEN(pickle.load(open(os.path.join(model_dir, "tokenizer_state.pkl"), "rb")))
+        self.tokenizer = NixTokenizerEN(pickle.load(open(os.path.join(model_dir, "tokenizer_state.pkl"), "rb")))
         # Load TTS model
         self.encoder = ort.InferenceSession(os.path.join(model_dir, "encoder.onnx"))
         self.decoder = ort.InferenceSession(os.path.join(model_dir, "decoder.onnx"))

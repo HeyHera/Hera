@@ -11,6 +11,7 @@ def launch_applications(command):
         "Text-To-Speech", "tts/speak.py").load_module()
     entity_extractor_module = SourceFileLoader(
         "Entity_Extractor", "nlu/entity_extraction/entity_extractor.py").load_module()
+        
 
     command = str(command).lower()
     entity = entity_extractor_module.extract(model_test_sentence=command, entity_label="APPLICATION", model_path="nlu/entity_extraction/output/launch_applications/model-best")

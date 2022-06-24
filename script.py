@@ -6,8 +6,7 @@ try:
     import wake_word_detection.wake_word_detection_script as wwd_module
     import automatic_speech_recognition.automatic_speech_recognition_script as asr_module
     import nlu.intent_classification.intent_classifier as intent_classifier_module
-    tts_module = SourceFileLoader(
-        "Text-To-Speech", "tts/speak.py").load_module()
+    import tts.speak as tts_module
     import skills.greetings as greeting_skill
     import skills.music_playback as music_playback_skill
     import skills.launch_application as launch_application_skill
@@ -36,7 +35,6 @@ while(True):
         except Exception as e:
             print("An error occurred while starting Wake Word Detection thread")
 
-
         # CALLING TEXT-TO-SPEECH FOR GREETING THE USER
         tts_module.tts(greeting_skill.greeting())
 
@@ -50,8 +48,7 @@ while(True):
         except Exception as e:
             print(
                 "\nError encountered. Couldn't connect with Automatic Speech Recognition.\n" + str(e))
-        
-        
+
         # PASSING THE COMMAND TO INTENT CLASSIFIER
         print("\n{} Classifying Intent {}".format(
             '='*20, '='*20))
@@ -63,16 +60,17 @@ while(True):
         skill_response = None
         print("\n{} Skill match starting {}".format(
             '='*20, '='*20))
-        
-        #POSSIBLE LABELS {'LAUNCH_APPLICATION', 'MUSIC_PLAYBACK_RANDOM_SONG','MUSIC_PLAYBACK_ALBUM_SONG', 'UNDEFINED'} etc
+
+        # POSSIBLE LABELS {'LAUNCH_APPLICATION', 'MUSIC_PLAYBACK_RANDOM_SONG','MUSIC_PLAYBACK_ALBUM_SONG', 'UNDEFINED'} etc
         if matched_intent == 'UNDEFINED':
             print("Nothing received as command")
             # PLAY AN AUDITORY ERROR BELL
-        
+
         elif matched_intent in ['MUSIC_PLAYBACK_ALBUM_SONG', 'MUSIC_PLAYBACK_SPECIFIC_SONG', 'MUSIC_PLAYBACK_RANDOM_SONG']:
             print("Matched Skill: {}".format(matched_intent))
-            skill_response = music_playback_skill.music_playback(statement, matched_intent)
-        
+            skill_response = music_playback_skill.music_playback(
+                statement, matched_intent)
+
         elif matched_intent == 'LAUNCH_APPLICATION':
             print("Matched Skill: {}".format(matched_intent))
             skill_response = launch_application_skill.launch_applications(
