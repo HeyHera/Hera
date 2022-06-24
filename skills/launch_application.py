@@ -6,15 +6,12 @@ def launch_applications(command):
     import subprocess
     import webbrowser
     import difflib
-    from importlib.machinery import SourceFileLoader
-    tts_module = SourceFileLoader(
-        "Text-To-Speech", "tts/speak.py").load_module()
-    entity_extractor_module = SourceFileLoader(
-        "Entity_Extractor", "nlu/entity_extraction/entity_extractor.py").load_module()
-        
+    import tts.speak as tts_module
+    import nlu.entity_extraction.entity_extractor as entity_extractor_module
 
     command = str(command).lower()
-    entity = entity_extractor_module.extract(model_test_sentence=command, entity_label="APPLICATION", model_path="nlu/entity_extraction/output/launch_applications/model-best")
+    entity = entity_extractor_module.extract(model_test_sentence=command, entity_label="APPLICATION",
+                                             model_path="nlu/entity_extraction/output/launch_applications/model-best")
     app_to_launch = entity
     application_list = ['Firefox,Web Browser', 'Google Chrome',
                         'Weather', 'Calculator', 'Terminal,Command Prompt', 'Files,Explorer']

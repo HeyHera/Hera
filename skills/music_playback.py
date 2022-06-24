@@ -7,12 +7,9 @@ def music_playback(command, intent):
     import subprocess
     import yaml
     import random
-    from importlib.machinery import SourceFileLoader
     import difflib
-    tts_module = SourceFileLoader(
-        "Text-To-Speech", "tts/speak.py").load_module()
-    entity_extractor_module = SourceFileLoader(
-        "Entity_Extractor", "nlu/entity_extraction/entity_extractor.py").load_module()
+    import tts.speak as tts_module
+    import nlu.entity_extraction.entity_extractor as entity_extractor_module
 
     def random_song(music_list):
         tts_module.tts("Playing a random song")
@@ -38,20 +35,21 @@ def music_playback(command, intent):
     if intent == 'MUSIC_PLAYBACK_RANDOM_SONG':
         song_file = random_song(music_list=music_list)
     elif intent == 'MUSIC_PLAYBACK_SPECIFIC_SONG' or 'MUSIC_PLAYBACK_ALBUM_SONG':
-        song_details = entity_extractor_module.extract(model_test_sentence=command, entity_label="MUSIC", model_path="nlu/entity_extraction/output/music_playback/model-best")
+        song_details = entity_extractor_module.extract(
+            model_test_sentence=command, entity_label="MUSIC", model_path="nlu/entity_extraction/output/music_playback/model-best")
         if song_details == "None":
             tts_module.tts("Sorry! I couldn't find the requested song")
-            return(1) # 1 = Fail
+            return(1)  # 1 = Fail
         closest_matched_songs = difflib.get_close_matches(
             song_details, music_list, cutoff=0.4)
         if len(closest_matched_songs) > 0:
             song_file = closest_matched_songs[0]
         else:
             tts_module.tts("Sorry! I couldn't find the requested song")
-            return(1) # 1 = Fail
+            return(1)  # 1 = Fail
     else:
         tts_module.tts("Sorry! I couldn't find the requested song")
-        return(1) # 1 = Fail
+        return(1)  # 1 = Fail
     vlc_path = "/usr/bin/vlc"
     try:
         print("Playing {}".format(song_file))
@@ -65,7 +63,8 @@ def music_playback(command, intent):
 
 if __name__ == '__main__':
     skill_response = None
-    skill_response = music_playback("play the song from grandmaster", "MUSIC_PLAYBACK_ALBUM_SONG")
+    skill_response = music_playback(
+        "play the song from grandmaster", "MUSIC_PLAYBACK_ALBUM_SONG")
     # skill_response = music_playback("Play the song in the end")
     if skill_response != None:
         if skill_response == 0:

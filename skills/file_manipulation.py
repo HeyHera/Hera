@@ -3,7 +3,6 @@ def move_copy_or_delete_file(command):
     import numpy as np
     import os
     import yaml
-    from importlib.machinery import SourceFileLoader
     command = str(command).lower()
     words = command.split()
     os_username = os.getlogin()
@@ -13,11 +12,10 @@ def move_copy_or_delete_file(command):
     except yaml.YAMLError as exc:
         print(exc)
         exit()
-    ts_module = SourceFileLoader(
-        "Text-To-Speech", "tts/speak.py").load_module()
-    entity_extractor_module = SourceFileLoader(
-        "Entity_Extractor", "nlu/entity_extraction/entity_extractor.py").load_module()
-    entity = entity_extractor_module.extract(model_test_sentence=command, entity_label="FILE_MANIPULATION", model_path="nlu/entity_extraction/output/file_manipulation/model-best")
+    import tts.speak as tts_module
+    import nlu.entity_extraction.entity_extractor as entity_extractor_module
+    entity = entity_extractor_module.extract(model_test_sentence=command, entity_label="FILE_MANIPULATION",
+                                             model_path="nlu/entity_extraction/output/file_manipulation/model-best")
     source = entity
     try:
         file_list = os.listdir(+source)
@@ -53,6 +51,7 @@ def move_copy_or_delete_file(command):
     else:
         gtts_text = "Sorry! An error encountered"
         gtts(text=gtts_text)
+
 
 if __name__ == '__main__':
     spoken = greeting()
