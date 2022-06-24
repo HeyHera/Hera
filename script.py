@@ -8,12 +8,9 @@ try:
     import nlu.intent_classification.intent_classifier as intent_classifier_module
     tts_module = SourceFileLoader(
         "Text-To-Speech", "tts/speak.py").load_module()
-    greeting_skill = SourceFileLoader(
-        "Greeting-Skill", "skills/greetings.py").load_module()
-    music_playback_skill = SourceFileLoader(
-        "Music-Playback-Skill", "skills/music-playback.py").load_module()
-    launch_application_skill = SourceFileLoader(
-        "Launch-Application", "skills/launch-application.py").load_module()
+    import skills.greetings as greeting_skill
+    import skills.music_playback as music_playback_skill
+    import skills.launch_application as launch_application_skill
     print("\nLocal imports successful")
 except Exception as e:
     print("\nLocal imports unsuccessful.\n" + str(e))
