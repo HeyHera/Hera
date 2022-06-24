@@ -1,19 +1,20 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 import sounddevice as sd
 import librosa
 import numpy as np
 from tensorflow.keras.models import load_model
-from scipy.io.wavfile import write
-# import os
+# from scipy.io.wavfile import write
 import threading
 
-# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2`'
 # print(sd.query_devices())
 # print(sd.default.device)
 
 # CONSTANTS
 fs = 22050
 seconds = 2
-model = load_model("wake-word-detection/saved_model/WWD.h5")
+model = load_model("wake_word_detection/saved_model/WWD.h5")
 
 
 def listener():

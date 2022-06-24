@@ -3,8 +3,7 @@ import threading
 
 # LOCAL IMPORTS
 try:
-    wwd_module = SourceFileLoader(
-        "Wake-Word_Detection", "wake-word-detection/wake-word-detection.py").load_module()
+    import wake_word_detection.wake_word_detection_script as wwd_module
     asr_module = SourceFileLoader(
         "Automatic-Speech-Recognition", "speech-recognition/automatic-speech-recognition.py").load_module()
     intent_classifier_module = SourceFileLoader(

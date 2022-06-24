@@ -3,7 +3,11 @@ speech-recognition/vosk-api/*
 speech-recognition/vosk-models/*
 **/__pycache__/
 output.wav
-wake-word-detection/recordings/
+wake_word_detection/recordings/
+wake_word_detection/repository/audio_data/
+wake_word_detection/repository/audio-backup/
+wake_word_detection/repository/background_sound/
+wake_word_detection/repository/final_audio_data_csv/
 nlu/entity_extraction/output/model-*
 tts/nix/models/nix-ljspeech-stochastic-v0.1/
 nlu/entity_extraction/output/launch_applications/

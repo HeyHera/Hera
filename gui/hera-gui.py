@@ -18,8 +18,7 @@ matplotlib.use("Qt5Agg")
 
 # LOCAL IMPORTS
 try:
-    wwd_module = SourceFileLoader(
-        "Wake-Word-Detection", "wake-word-detection/wake-word-detection.py").load_module()
+    import wake_word_detection.wake_word_detection_script
     asr_module = SourceFileLoader(
         "Automatic-Speech-Recognition", "speech-recognition/automatic-speech-recognition.py").load_module()
     tts_module = SourceFileLoader(
