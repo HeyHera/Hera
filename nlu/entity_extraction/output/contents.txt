@@ -1,3 +1,0 @@
-This directory contains the models for spaCy Named Entity Recognition
-model-best
-model-last
