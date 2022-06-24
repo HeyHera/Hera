@@ -5,8 +5,7 @@ import threading
 try:
     import wake_word_detection.wake_word_detection_script as wwd_module
     import automatic_speech_recognition.automatic_speech_recognition_script as asr_module
-    intent_classifier_module = SourceFileLoader(
-        "Intent_Classifier_Module", "nlu/intent_classification/intent_classifier.py").load_module()
+    import nlu.intent_classification.intent_classifier as intent_classifier_module
     tts_module = SourceFileLoader(
         "Text-To-Speech", "tts/speak.py").load_module()
     greeting_skill = SourceFileLoader(
