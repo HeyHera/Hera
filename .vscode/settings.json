@@ -3,6 +3,7 @@
         "getlogin",
         "joblib",
         "kivy",
+        "kivymd",
         "rasa",
         "scikit",
         "sklearn",
