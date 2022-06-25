@@ -4,8 +4,10 @@ import timeit
 
 import numpy as np
 import onnxruntime as ort
-
-from nix.tokenizers.tokenizer_en import NixTokenizerEN
+try:
+    from tts.nix.tokenizers.tokenizer_en import NixTokenizerEN
+except ModuleNotFoundError:
+    from nix.tokenizers.tokenizer_en import NixTokenizerEN
 
 class NixTTSInference:
 

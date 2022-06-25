@@ -1,5 +1,8 @@
 from scipy.io.wavfile import write
-from nix.models.TTS import NixTTSInference
+try:
+    from tts.nix.models.TTS import NixTTSInference
+except ModuleNotFoundError:
+    from nix.models.TTS import NixTTSInference
 import os
 
 # Initiate Nix-TTS
