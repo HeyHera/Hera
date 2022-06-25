@@ -1,3 +1,4 @@
+import subprocess
 import threading
 
 # LOCAL IMPORTS
@@ -35,7 +36,9 @@ while(True):
             print("An error occurred while starting Wake Word Detection thread")
 
         # CALLING TEXT-TO-SPEECH FOR GREETING THE USER
-        tts_module.tts(greeting_skill.greeting())
+        # tts_module.tts(greeting_skill.greeting())
+        subprocess.call(["/usr/bin/mpg123", 'assets/Assistant-Module_Assets_listen.mp3'], stdout=subprocess.DEVNULL,
+                                stderr=subprocess.STDOUT)
 
         # CALLING AUTOMATIC-SPEECH-RECOGNITION TO RECOGNIZE COMMAND
         try:

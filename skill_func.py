@@ -1,6 +1,13 @@
 import random
 import subprocess
 import time
+import multiprocessing
+
+def play_vlc(s_path):
+    vlc_path = "/usr/bin/vlc"
+    subprocess.Popen([vlc_path, s_path], stderr=subprocess.STDOUT)
+    print("Playing complete")
+
 
 def sender(pipe_end):
     """
@@ -10,11 +17,8 @@ def sender(pipe_end):
     msg=random.choice(site_list)
     # msg = "Playing the song Faded"
     pipe_end.send(msg)
-    print("Sent the message: {}".format(msg))
     pipe_end.close()
-    print("Sleeping 5 sec")
-    vlc_path = "/usr/bin/vlc"
+    print("Sleeping for 5 sec")
     time.sleep(5)
-    subprocess.call([vlc_path, '../Music/sample.mp3'], stderr=subprocess.STDOUT) 
-
     print("Sleep finished")
+    multiprocessing.Process(target=play_vlc, args=('../Music/sample.mp3',)).start()
