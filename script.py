@@ -28,7 +28,7 @@ while(True):
             print("\n{} Wake Word Detection thread starting {}".format(
                 '='*20, '='*20))
             wwd_thread = threading.Thread(
-                target=wwd_module.listener(), name="Wake-Word-Detection-Thread")
+                target=wwd_module.listener, name="Wake-Word-Detection-Thread")
             wwd_thread.start()
             wwd_thread.join()  # WAITING wwd_thread TO STOP EXECUTING
         except Exception as e:
