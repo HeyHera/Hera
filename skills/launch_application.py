@@ -36,7 +36,7 @@ def launch_applications(command):
                             stderr=subprocess.STDOUT)
             return(0)  # 0 = Success
         except Exception as e:
-            tts_module.tts("Sorry! An error encountered.")
+            tts_module.tts("Sorry! An error encountered")
             print("App " + str(e))
             return(1)  # 1 = Fail
     else:
@@ -56,13 +56,13 @@ def launch_applications(command):
                 print("Sites " + str(e))
                 return(1)  # 1 = Fail
         else:
-            tts_module.tts("Sorry! Unable to launch")
+            tts_module.tts("Sorry! Unable to launch that")
             return(1)  # 1 = Fail
 
 
 if __name__ == '__main__':
     skill_response = None
-    skill_response = launch_applications("Open prime video")
+    skill_response = launch_applications("Open youtube")
     # spoken = launch_applications("Launch Wikipedia")
     if skill_response != None:
         if skill_response == 0:
