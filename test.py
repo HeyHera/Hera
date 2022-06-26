@@ -2,7 +2,7 @@ import threading
 import time
 from kivymd.app import MDApp
 from kivy.lang import Builder
-from kivy.properties import StringProperty, ObjectProperty
+from kivy.properties import ObjectProperty
 from kivymd.uix.screen import MDScreen
 from kivy.clock import Clock
 
@@ -13,7 +13,7 @@ class GV:
 
 Builder.load_string("""
 #:import get_color_from_hex kivy.utils.get_color_from_hex
-<MySec>:
+<KivyMDLayout>:
     status: status_label
     MDScreen:
         MDLabel:
@@ -29,48 +29,48 @@ Builder.load_string("""
             pos_hint: {"center_x": 0.5, "center_y": 0.25}
             theme_text_color: "Custom"
             line_color: get_color_from_hex("#f2dafe")
-            on_release: root.display_hello_status()
+            on_release: root.executer()
 """)
 
 
-class MySec(MDScreen):
+class KivyMDLayout(MDScreen):
     status = ObjectProperty(None)
 
-    def display_hello_status(self):
-        threading.Thread(target=self.do_something).start()
+    def executer(self):
+        threading.Thread(target=self.script_run).start()
 
-    def do_something(self):
+    def script_run(self):
         # First pass
-        print('starting first')
-        time.sleep(7)
+        print('\nstarting first pass\n')
+        time.sleep(3)
         GV.global_label_text = "Play a song"
         # schedule the GUI update back on the main thread
-        Clock.schedule_once(self.something_finished)
+        Clock.schedule_once(self.update_label)
 
         # Second pass
-        print('starting second')
-        time.sleep(7)
+        print('\nstarting second pass\n')
+        time.sleep(3)
         GV.global_label_text = "Playing a random song"
-        print('finished second')
         # schedule the GUI update back on the main thread
-        Clock.schedule_once(self.something_finished)
+        Clock.schedule_once(self.update_label)
 
         # schedule the GUI update to clear label back on the main thread
         time.sleep(3)
         Clock.schedule_once(self.clear_label)
 
-    def something_finished(self, dt):
-        print(GV.global_label_text)
+    def update_label(self, dt):
+        print("\nUpdate label with " + GV.global_label_text + "\n")
         self.status.text = GV.global_label_text
 
     def clear_label(self, dt):
         self.status.text = "..."
+        print("\nLabel cleared\n")
 
 
 class Hera(MDApp):
     def build(self):
         self.theme_cls.theme_style = "Dark"
-        return MySec()
+        return KivyMDLayout()
 
 
 if __name__ == '__main__':
