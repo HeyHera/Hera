@@ -29,7 +29,7 @@ Builder.load_string("""
 
 
 class KivyMDLayout(MDScreen):
-    global_label_text = ""
+    label_text = ""
     status = ObjectProperty(None)
 
     def executer(self):
@@ -37,16 +37,16 @@ class KivyMDLayout(MDScreen):
 
     def script_run(self):
         # First pass
-        print('\nstarting first pass\n')
+        print('Starting first pass\n')
         time.sleep(3)
-        self.global_label_text = "Play a song"
+        self.label_text = "Play a song"
         # schedule the GUI update back on the main thread
         Clock.schedule_once(self.update_label)
 
         # Second pass
-        print('\nstarting second pass\n')
+        print('Starting second pass\n')
         time.sleep(3)
-        self.global_label_text = "Playing a random song"
+        self.label_text = "Playing a random song"
         # schedule the GUI update back on the main thread
         Clock.schedule_once(self.update_label)
 
@@ -55,12 +55,12 @@ class KivyMDLayout(MDScreen):
         Clock.schedule_once(self.clear_label)
 
     def update_label(self, dt):
-        print("\nUpdate label with " + self.global_label_text + "\n")
-        self.status.text = self.global_label_text
+        print("Label updated: " + self.label_text + "\n")
+        self.status.text = self.label_text
 
     def clear_label(self, dt):
         self.status.text = "..."
-        print("\nLabel cleared\n")
+        print("Label cleared\n")
 
 
 class Hera(MDApp):
