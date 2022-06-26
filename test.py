@@ -1,10 +1,29 @@
+import subprocess
 import threading
+import kivy
+from kivy.config import Config
 import time
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
 from kivymd.uix.screen import MDScreen
 from kivy.clock import Clock
+
+kivy.require('2.1.0')
+
+# LOCAL IMPORTS
+try:
+    # import wake_word_detection.wake_word_detection_script as wwd_module
+    import automatic_speech_recognition.automatic_speech_recognition_script as asr_module
+    import nlu.intent_classification.intent_classifier as intent_classifier_module
+    import tts.speak as tts_module
+    import skills.greetings as greeting_skill
+    import skills.music_playback as music_playback_skill
+    import skills.launch_application as launch_application_skill
+    import skill_func
+    print("\nLocal imports successful")
+except Exception as e:
+    print("\nLocal imports unsuccessful.\n" + str(e))
 
 Builder.load_string("""
 #:import get_color_from_hex kivy.utils.get_color_from_hex
@@ -33,38 +52,83 @@ class KivyMDLayout(MDScreen):
     status = ObjectProperty(None)
 
     def executer(self):
-        threading.Thread(target=self.script_run).start()
+        threading.Thread(target=self.running_script).start()
 
-    def script_run(self):
-        # First pass
-        print('Starting first pass\n')
-        time.sleep(3)
-        self.label_text = "Play a song"
-        # schedule the GUI update back on the main thread
-        Clock.schedule_once(self.update_label)
+    def running_script(self):
 
-        # Second pass
-        print('Starting second pass\n')
-        time.sleep(3)
-        self.label_text = "Playing a random song"
-        # schedule the GUI update back on the main thread
-        Clock.schedule_once(self.update_label)
+        # CALLING AUTOMATIC-SPEECH-RECOGNITION TO RECOGNIZE COMMAND
+        try:
+            print("\n{} Automatic Speech Recognition initializing {}".format(
+                '='*20, '='*20))
+            self.label_text = "..."
+            # SCHEDULE THE GUI UPDATE BACK ON THE MAIN THREAD
+            Clock.schedule_once(self.update_label)
+            time.sleep(0.5)
+            spoken = asr_module.asr()
+            spoken = str(spoken).lower()
+            print("\nASR: " + spoken)
+            self.label_text = spoken.capitalize()
+            # SCHEDULE THE GUI UPDATE BACK ON THE MAIN THREAD
+            Clock.schedule_once(self.update_label)
+            time.sleep(0.5)
+        except Exception as e:
+            print(
+                "\nError encountered. Couldn't connect with Automatic Speech Recognition.\n" + str(e))\
 
-        # schedule the GUI update to clear label back on the main thread
-        time.sleep(3)
+        # AUDIBLE PROCESSING SOUND
+        subprocess.call(["mpg321", 'assets/audible-feedback/Assistant-Module_Assets_processing.mp3'], stdout=subprocess.DEVNULL,
+                        stderr=subprocess.STDOUT)
+
+        # PASSING THE COMMAND TO INTENT CLASSIFIER
+        print("\n{} Classifying Intent {}".format(
+            '='*20, '='*20))
+        matched_intent = intent_classifier_module.classify(spoken)
+        print("Matched Intent: {}".format(matched_intent))
+
+        # MATCHING THE INTENT WITH CORRESPONDING SKILL
+        statement = spoken.lower()
+        skill_response = None
+        print("\n{} Skill match starting {}".format(
+            '='*20, '='*20))
+        # POSSIBLE LABELS {'LAUNCH_APPLICATION', 'MUSIC_PLAYBACK_RANDOM_SONG','MUSIC_PLAYBACK_ALBUM_SONG', 'UNDEFINED'} etc
+
+        if matched_intent == 'UNDEFINED':
+            print("Nothing received as command")
+            # AUDIBLE FALLBACK SOUND
+            subprocess.call(["mpg321", 'assets/audible-feedback/Assistant-Module_Assets_fallback.mp3'], stdout=subprocess.DEVNULL,
+                            stderr=subprocess.STDOUT)
+        
+        elif matched_intent in ['MUSIC_PLAYBACK_ALBUM_SONG', 'MUSIC_PLAYBACK_SPECIFIC_SONG', 'MUSIC_PLAYBACK_RANDOM_SONG']:
+            print("Matched Skill: {}".format(matched_intent))
+            skill_response = music_playback_skill.music_playback(
+                statement, matched_intent)
+
+        elif matched_intent == 'LAUNCH_APPLICATION':
+            print("Matched Skill: {}".format(matched_intent))
+            skill_response = launch_application_skill.launch_applications(
+                statement)
+        print("Skill response: {}" .format(skill_response))
+        if skill_response == 0:
+            print("Success")
+        elif skill_response == 1:
+            print("Fail")
+        elif skill_response == 2:
+            print("Return prompt")
+        elif skill_response != None:
+            tts_module.tts("Sorry! I did't understood that.")
+
+        time.sleep(2)
         Clock.schedule_once(self.clear_label)
 
     def update_label(self, dt):
-        print("Label updated: " + self.label_text + "\n")
         self.status.text = self.label_text
 
     def clear_label(self, dt):
-        self.status.text = "..."
-        print("Label cleared\n")
-
+        self.status.text = "Hello!"
 
 class Hera(MDApp):
     def build(self):
+        self.icon = 'Hera-Logo-128x128.ico'
         self.theme_cls.theme_style = "Dark"
         return KivyMDLayout()
 
