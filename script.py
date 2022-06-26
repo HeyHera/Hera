@@ -37,8 +37,8 @@ while(True):
 
         # CALLING TEXT-TO-SPEECH FOR GREETING THE USER
         # tts_module.tts(greeting_skill.greeting())
-        subprocess.call(["/usr/bin/mpg123", 'assets/Assistant-Module_Assets_listen.mp3'], stdout=subprocess.DEVNULL,
-                                stderr=subprocess.STDOUT)
+        subprocess.call(["/usr/bin/mpg123", 'assets/audible-feedback/Assistant-Module_Assets_listen.mp3'], stdout=subprocess.DEVNULL,
+                        stderr=subprocess.STDOUT)
 
         # CALLING AUTOMATIC-SPEECH-RECOGNITION TO RECOGNIZE COMMAND
         try:
@@ -50,6 +50,10 @@ while(True):
         except Exception as e:
             print(
                 "\nError encountered. Couldn't connect with Automatic Speech Recognition.\n" + str(e))
+
+        # AUDIBLE PROCESSING SOUND
+        subprocess.call(["mpg321", 'assets/audible-feedback/Assistant-Module_Assets_processing.mp3'], stdout=subprocess.DEVNULL,
+                        stderr=subprocess.STDOUT)
 
         # PASSING THE COMMAND TO INTENT CLASSIFIER
         print("\n{} Classifying Intent {}".format(
@@ -66,7 +70,9 @@ while(True):
         # POSSIBLE LABELS {'LAUNCH_APPLICATION', 'MUSIC_PLAYBACK_RANDOM_SONG','MUSIC_PLAYBACK_ALBUM_SONG', 'UNDEFINED'} etc
         if matched_intent == 'UNDEFINED':
             print("Nothing received as command")
-            # PLAY AN AUDITORY ERROR BELL
+            # AUDIBLE FALLBACK SOUND
+            subprocess.call(["mpg321", 'assets/audible-feedback/Assistant-Module_Assets_fallback.mp3'], stdout=subprocess.DEVNULL,
+                            stderr=subprocess.STDOUT)
 
         elif matched_intent in ['MUSIC_PLAYBACK_ALBUM_SONG', 'MUSIC_PLAYBACK_SPECIFIC_SONG', 'MUSIC_PLAYBACK_RANDOM_SONG']:
             print("Matched Skill: {}".format(matched_intent))
