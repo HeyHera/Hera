@@ -8,9 +8,6 @@ import threading
 kivy.require('2.1.0')
 
 
-class WindowManager(ScreenManager):
-    pass
-
 class PrintHello(Screen):
     username = ObjectProperty(None)
     status = ObjectProperty(None)
@@ -36,7 +33,8 @@ class PrintHello(Screen):
 
 
 class MyApp(App):
-    pass
+    def build(self):
+        return PrintHello()
 
 
 if __name__ == '__main__':
