@@ -6,11 +6,6 @@ from kivy.properties import ObjectProperty
 from kivymd.uix.screen import MDScreen
 from kivy.clock import Clock
 
-
-class GV:
-    global_label_text = ""
-
-
 Builder.load_string("""
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 <KivyMDLayout>:
@@ -34,6 +29,7 @@ Builder.load_string("""
 
 
 class KivyMDLayout(MDScreen):
+    global_label_text = ""
     status = ObjectProperty(None)
 
     def executer(self):
@@ -43,14 +39,14 @@ class KivyMDLayout(MDScreen):
         # First pass
         print('\nstarting first pass\n')
         time.sleep(3)
-        GV.global_label_text = "Play a song"
+        self.global_label_text = "Play a song"
         # schedule the GUI update back on the main thread
         Clock.schedule_once(self.update_label)
 
         # Second pass
         print('\nstarting second pass\n')
         time.sleep(3)
-        GV.global_label_text = "Playing a random song"
+        self.global_label_text = "Playing a random song"
         # schedule the GUI update back on the main thread
         Clock.schedule_once(self.update_label)
 
@@ -59,8 +55,8 @@ class KivyMDLayout(MDScreen):
         Clock.schedule_once(self.clear_label)
 
     def update_label(self, dt):
-        print("\nUpdate label with " + GV.global_label_text + "\n")
-        self.status.text = GV.global_label_text
+        print("\nUpdate label with " + self.global_label_text + "\n")
+        self.status.text = self.global_label_text
 
     def clear_label(self, dt):
         self.status.text = "..."
