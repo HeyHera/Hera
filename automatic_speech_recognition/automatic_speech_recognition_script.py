@@ -1,5 +1,6 @@
 import os
 import queue
+import subprocess
 import sounddevice as sd
 import vosk
 import sys
@@ -31,6 +32,9 @@ def asr():
                            channels=1, callback=callback):
         # int16: 16-bit audio format
         print("I'M LISTENING")
+        # AUDIBLE LISTENING SOUND
+        subprocess.call(["mpg321", 'assets/audible-feedback/Assistant-Module_Assets_listen.mp3'], stdout=subprocess.DEVNULL,
+                        stderr=subprocess.STDOUT)
         # Audio in wav mono format
         rec = vosk.KaldiRecognizer(model, samplerate)
         spoken_words = []
