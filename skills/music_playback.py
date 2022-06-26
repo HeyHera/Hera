@@ -8,8 +8,11 @@ def music_playback(command, intent):
     import yaml
     import random
     import difflib
-    import tts.speak as tts_module
-    import nlu.entity_extraction.entity_extractor as entity_extractor_module
+    from importlib.machinery import SourceFileLoader
+    tts_module = SourceFileLoader(
+        "Text-To-Speech", "tts/speak.py").load_module()
+    entity_extractor_module = SourceFileLoader(
+        "Entity-Extractor-Module", "nlu/entity_extraction/entity_extractor.py").load_module()
 
     def random_song(music_list):
         tts_module.tts("Playing a random song")

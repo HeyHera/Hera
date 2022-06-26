@@ -6,8 +6,11 @@ def launch_applications(command):
     import subprocess
     import webbrowser
     import difflib
-    import tts.speak as tts_module
-    import nlu.entity_extraction.entity_extractor as entity_extractor_module
+    from importlib.machinery import SourceFileLoader
+    tts_module = SourceFileLoader(
+        "Text-To-Speech", "tts/speak.py").load_module()
+    entity_extractor_module = SourceFileLoader(
+        "Entity-Extractor-Module", "nlu/entity_extraction/entity_extractor.py").load_module()
 
     command = str(command).lower()
     entity = entity_extractor_module.extract(model_test_sentence=command, entity_label="APPLICATION",
@@ -59,7 +62,7 @@ def launch_applications(command):
 
 if __name__ == '__main__':
     skill_response = None
-    skill_response = launch_applications("Open the wikipedia")
+    skill_response = launch_applications("Open prime video")
     # spoken = launch_applications("Launch Wikipedia")
     if skill_response != None:
         if skill_response == 0:
