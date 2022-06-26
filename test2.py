@@ -8,28 +8,54 @@ import threading
 kivy.require('2.1.0')
 
 
+class GV:
+    global_label_text = ""
+
+
 class PrintHello(MDScreen):
     username = ObjectProperty(None)
     status = ObjectProperty(None)
 
     def display_hello_status(self):
         # Inform about process of generating hello text.
-        self.status.text = "printing hello..."  # this text is never displayed.
         # Pretend something is happening in the background. Actually make it happen on a background thread
         threading.Thread(target=self.do_something).start()
 
     def do_something(self):
-        print('starting something')
-        time.sleep(5)
-        print('finished something')
-        
+        print('starting first')
+        time.sleep(7)
+        GV.global_label_text = "Play a song"
+
         # schedule the GUI update back on the main thread
         Clock.schedule_once(self.something_finished)
 
+        # Second itt
+        print('starting second')
+        time.sleep(7)
+        GV.global_label_text = "Playing a random song"
+        print('finished second')
+
+        # schedule the GUI update back on the main thread
+        Clock.schedule_once(self.something_finished)
+        time.sleep(3)
+        Clock.schedule_once(self.clear_label)
+
     def something_finished(self, dt):
-        self.username.text = f"Hello, {self.username.text}!"
+        print(GV.global_label_text)
+        self.status.text = GV.global_label_text
         # Display information indicating successful printing.
-        self.status.text = "printed!"
+        # self.status.text = "printed!"
+
+    def something_finished_two(self, dt):
+        # self.username.text = GV.global_label_text
+        print(GV.global_label_text)
+        self.status.text = GV.global_label_text
+        # Display information indicating successful printing.
+        # self.status.text = "printed!"
+
+    def clear_label(self, dt):
+        # Display information indicating successful printing.
+        self.status.text = ""
 
 
 class MyApp(MDApp):
