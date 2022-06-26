@@ -1,0 +1,50 @@
+WindowManager:
+    PrintHello:
+
+<PrintHello>:
+    username: username_text_input
+    status: status_label
+
+    BoxLayout:
+        orientation: "vertical"
+
+        GridLayout:
+            cols: 2
+            padding: 8
+            spacing: 8
+
+            Label:
+                text: "Your name:"
+                size_hint_y: None
+                height: 32
+                bold: True
+
+            TextInput:
+                id: username_text_input
+                size_hint_y: None
+                height: 32
+                multiline: False
+
+        FloatLayout:
+
+            Button:
+                text: "Print"
+                size_hint: 0.2, 0.2
+                pos_hint: {"center_x": 0.6, "y": 0.4}
+                on_release: root.display_hello_status()
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: 0.2, 0.2
+                pos_hint: {"center_x": 0.2, "y": 0.4}
+                padding: 4
+
+                Label:
+                    text: "Status:"
+                    bold: True
+
+                Label:
+                    id: status_label
+                    text: "off"
+                    background_color: 0, 0, 0, 0  # black
+                    color: 1, 1, 1, 1  # white
