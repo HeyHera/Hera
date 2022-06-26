@@ -1,12 +1,14 @@
+from importlib.machinery import SourceFileLoader
 from scipy.io.wavfile import write
-try:
-    from tts.nix.models.TTS import NixTTSInference
-except ModuleNotFoundError:
-    from nix.models.TTS import NixTTSInference
+# from tts.nix.models.TTS import NixTTSInference
 import os
 
 # Initiate Nix-TTS
-nix = NixTTSInference(model_dir = "tts/nix/models/nix-ljspeech-stochastic-v0.1")
+NixTTSInference_module = SourceFileLoader(
+        "NixTTSInference-Module", "tts/nix/models/TTS.py").load_module()
+
+
+nix = NixTTSInference_module.NixTTSInference(model_dir = "tts/nix/models/nix-ljspeech-stochastic-v0.1")
 def tts(text):
     print("\n" + text)
     # Tokenize input text
