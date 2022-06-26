@@ -4,3 +4,5 @@ vosk - https://alphacephei.com/vosk/, https://github.com/alphacep/vosk-api
 spacy - https://spacy.io/
 sklearn - https://scikit-learn.org/
 nix-tts - https://github.com/rendchevi/nix-tts
+kivy - https://kivy.org/
+kivymd - https://kivymd.readthedocs.io/en/latest/

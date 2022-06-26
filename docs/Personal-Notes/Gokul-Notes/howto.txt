@@ -3,3 +3,5 @@ virtual env: python3 -m venv env
 spacy
 pip install -U spacy
 python -m spacy download en_core_web_sm
+
+mpg321: sudo apt install mpg321
