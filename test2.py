@@ -1,14 +1,14 @@
 import time
 import kivy
 from kivy.properties import ObjectProperty
-from kivy.uix.screenmanager import Screen, ScreenManager
-from kivy.app import App
+from kivymd.uix.screen import MDScreen
+from kivymd.app import MDApp
 from kivy.clock import Clock
 import threading
 kivy.require('2.1.0')
 
 
-class PrintHello(Screen):
+class PrintHello(MDScreen):
     username = ObjectProperty(None)
     status = ObjectProperty(None)
 
@@ -16,9 +16,9 @@ class PrintHello(Screen):
         # Inform about process of generating hello text.
         self.status.text = "printing hello..."  # this text is never displayed.
         # Pretend something is happening in the background. Actually make it happen on a background thread
-        threading.Thread(target=self.do_somehing).start()
+        threading.Thread(target=self.do_something).start()
 
-    def do_somehing(self):
+    def do_something(self):
         print('starting something')
         time.sleep(5)
         print('finished something')
@@ -32,8 +32,9 @@ class PrintHello(Screen):
         self.status.text = "printed!"
 
 
-class MyApp(App):
+class MyApp(MDApp):
     def build(self):
+        self.theme_cls.theme_style = "Dark"
         return PrintHello()
 
 
