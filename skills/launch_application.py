@@ -41,7 +41,7 @@ def launch_applications(command):
             return(1)  # 1 = Fail
     else:
         sites = ["www.gmail.com", "www.youtube.com", "www.wikipedia.com", "www.flipkart.com",
-                 "www.amazon.in", "https://web.whatsapp.com/", "www.in.bookmyshow.com", "www.hotstar.com", "www.primevideo.com"]
+                 "www.amazon.in", "https://web.whatsapp.com/", "www.in.bookmyshow.com", "www.hotstar.com", "www.primevideo.com", "https://docs.google.com/presentation/"]
         closest_matched_sites = difflib.get_close_matches(
             app_to_launch, sites, cutoff=0.3)
         if len(closest_matched_sites) != 0:
@@ -62,7 +62,7 @@ def launch_applications(command):
 
 if __name__ == '__main__':
     skill_response = None
-    skill_response = launch_applications("Open whatsapp")
+    skill_response = launch_applications("Open presentation")
     # spoken = launch_applications("Launch Wikipedia")
     if skill_response != None:
         if skill_response == 0:
