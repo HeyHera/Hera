@@ -13,5 +13,5 @@ def classify(str):
 
 
 if __name__ == '__main__':
-    pt = classify('who are the americans')
+    pt = classify('who are the american')
     print(pt)
