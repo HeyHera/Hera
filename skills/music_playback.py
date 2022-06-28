@@ -2,7 +2,7 @@
 # COMMAND LIKE: "Play the song Magic"
 
 
-def music_playback(command, intent):
+def music_playback(status, pipe_end, command, intent):
     import os
     import subprocess
     import yaml
@@ -15,11 +15,15 @@ def music_playback(command, intent):
         "Entity-Extractor-Module", "nlu/entity_extraction/entity_extractor.py").load_module()
 
     def random_song(music_list):
-        tts_module.tts("Playing a random song")
+        msg = "Playing a random song"
+        pipe_end.send(msg)
+        tts_module.tts(msg)
+        pipe_end.close()
         return(music_list[random.randint(0, len(music_list)-1)])
 
     os_username = os.getlogin()
     music_list = []
+    msg = None
     try:
         with open('configs/'+os_username+'.yaml', 'r') as config_file:
             yaml_load = yaml.safe_load(config_file)
@@ -41,40 +45,60 @@ def music_playback(command, intent):
         song_details = entity_extractor_module.extract(
             model_test_sentence=command, entity_label="MUSIC", model_path="nlu/entity_extraction/output/music_playback/model-best")
         if song_details == "None":
-            tts_module.tts("Sorry! I couldn't find the requested song")
-            return(1)  # 1 = Fail
+            msg = "Sorry! I couldn't find the requested song"
+            pipe_end.send(msg)
+            tts_module.tts(msg)
+            pipe_end.close()
+            tts_module.tts(msg)
+            status.value = 1
+            # return(1)  # 1 = Fail
         closest_matched_songs = difflib.get_close_matches(
             song_details, music_list, cutoff=0.4)
         if len(closest_matched_songs) > 0:
             song_file = closest_matched_songs[0]
         else:
-            tts_module.tts("Sorry! I couldn't find the requested song")
-            return(1)  # 1 = Fail
+            msg = "Sorry! I couldn't find the requested song"
+            pipe_end.send(msg)
+            tts_module.tts(msg)
+            pipe_end.close()
+            tts_module.tts(msg)
+            status.value = 1
     else:
-        tts_module.tts("Sorry! I couldn't find the requested song")
-        return(1)  # 1 = Fail
+        msg = "Sorry! I couldn't find the requested song"
+        pipe_end.send(msg)
+        tts_module.tts(msg)
+        pipe_end.close()
+        tts_module.tts(msg)
+        status.value = 1
     vlc_path = "/usr/bin/vlc"
     try:
-        print("Playing {}".format(song_file))
+        if intent != 'MUSIC_PLAYBACK_RANDOM_SONG':
+            msg = "Playing " + song_file
+            pipe_end.send(msg)
+            tts_module.tts("Playing")
         subprocess.call([vlc_path, str(exp_user_path) +
                         "/"+song_file], stderr=subprocess.STDOUT)
-        return(0)  # 0 = Success
+        status.value = 0
     except:
-        tts_module.tts("Sorry! An error encountered")
-        return(1)  # 1 = Fail
+        # tts_module.tts()
+        msg = "Sorry! An error encountered"
+        pipe_end.send(msg)
+        tts_module.tts(msg)
+        pipe_end.close()
+        tts_module.tts(msg)
+        status.value = 1
 
-
-if __name__ == '__main__':
-    skill_response = None
-    skill_response = music_playback(
-        "play the song from grandmaster", "MUSIC_PLAYBACK_ALBUM_SONG")
-    # skill_response = music_playback("Play the song in the end")
-    if skill_response != None:
-        if skill_response == 0:
-            print("Success")
-        elif skill_response == 1:
-            print("Fail")
-        else:
-            print("Return Prompt")
-    else:
-        print("Error")
+# if __name__ == '__main__':
+#     skill_response = None
+#     skill_response = music_playback(
+#         "play the song from grandmaster", "MUSIC_PLAYBACK_ALBUM_SONG")
+#     # skill_response = music_playback("Play the song in the end")
+#     if skill_response != None:
+#         if skill_response == 0:
+#             print("Success")
+#         elif skill_response == 1:
+#             print("Fail")
+#         else:
+#             print("Return Prompt")
+#     else:
+#         print("Error")

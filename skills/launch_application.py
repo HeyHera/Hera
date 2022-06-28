@@ -1,8 +1,10 @@
 # LAUNCH PRELISTED APPLICATIONS
 # COMMAND LIKE: "Launch Google Chrome"
 # "Open Weather"
+import sys
 
-def launch_applications(command):
+
+def launch_applications(status, pipe_end, command):
     import subprocess
     import webbrowser
     import difflib
@@ -26,50 +28,84 @@ def launch_applications(command):
         'Terminal': 'gnome-terminal',
         'Files': 'nautilus'
     }
-    closest_matched_apps = difflib.get_close_matches(
-        app_to_launch, application_list, cutoff=0.4)
+    try:
+        closest_matched_apps = difflib.get_close_matches(
+            app_to_launch, application_list, cutoff=0.4)
+    except:
+        msg = "Sorry! A critical error!"
+        pipe_end.send(msg)
+        tts_module.tts(msg)
+        pipe_end.close()
+        tts_module.tts(msg)
+        status.value = 1
+        sys.exit()
     if len(closest_matched_apps) != 0:
         try:
             to_be_launched = closest_matched_apps[0].split(',')[0]
-            print("Opening {}".format(to_be_launched))
+            msg = "Opening " + to_be_launched
+            pipe_end.send(msg)
+            tts_module.tts("Opening")
             subprocess.call("/usr/bin/"+app_dist[to_be_launched], stdout=subprocess.DEVNULL,
                             stderr=subprocess.STDOUT)
-            return(0)  # 0 = Success
+            status.value = 0  # 0 = Success
         except Exception as e:
-            tts_module.tts("Sorry! An error encountered")
+            msg = "Sorry! An error encountered"
+            pipe_end.send(msg)
+            tts_module.tts(msg)
+            pipe_end.close()
+            tts_module.tts(msg)
+            status.value = 1
             print("App " + str(e))
-            return(1)  # 1 = Fail
     else:
         sites = ["www.gmail.com", "www.youtube.com", "www.wikipedia.com", "www.flipkart.com",
                  "www.amazon.in", "https://web.whatsapp.com/", "www.in.bookmyshow.com", "www.hotstar.com", "www.primevideo.com", "https://docs.google.com/presentation/"]
-        closest_matched_sites = difflib.get_close_matches(
-            app_to_launch, sites, cutoff=0.3)
+        try:
+            closest_matched_sites = difflib.get_close_matches(
+                app_to_launch, sites, cutoff=0.3)
+        except:
+            msg = "Sorry! A critical error!"
+            pipe_end.send(msg)
+            tts_module.tts(msg)
+            pipe_end.close()
+            tts_module.tts(msg)
+            status.value = 1
+            sys.exit()
         if len(closest_matched_sites) != 0:
             to_be_launched = None
             try:
                 to_be_launched = closest_matched_sites[0]
-                print("Launching : " + to_be_launched)
+                msg = "Opening " + to_be_launched
+                pipe_end.send(msg)
+                tts_module.tts("Opening")
                 webbrowser.open_new_tab(to_be_launched)
-                return(0)  # 0 = Success
+                status.value = 0  # 0 = Success
             except Exception as e:
-                tts_module.tts("Sorry! An error encountered")
-                print("Sites " + str(e))
-                return(1)  # 1 = Fail
+                msg = "Sorry! An error encountered"
+                pipe_end.send(msg)
+                tts_module.tts(msg)
+                pipe_end.close()
+                tts_module.tts(msg)
+                status.value = 1
+                print("Site " + str(e))
         else:
-            tts_module.tts("Sorry! Unable to launch that")
-            return(1)  # 1 = Fail
+            msg = "Sorry! Unable to launch that"
+            pipe_end.send(msg)
+            tts_module.tts(msg)
+            pipe_end.close()
+            tts_module.tts(msg)
+            status.value = 1
 
 
-if __name__ == '__main__':
-    skill_response = None
-    skill_response = launch_applications("Open presentation")
-    # spoken = launch_applications("Launch Wikipedia")
-    if skill_response != None:
-        if skill_response == 0:
-            print("Success")
-        elif skill_response == 1:
-            print("Fail")
-        else:
-            print("Return prompt")
-    else:
-        print("Error")
+# if __name__ == '__main__':
+#     skill_response = None
+#     skill_response = launch_applications("Open presentation")
+#     # spoken = launch_applications("Launch Wikipedia")
+#     if skill_response != None:
+#         if skill_response == 0:
+#             print("Success")
+#         elif skill_response == 1:
+#             print("Fail")
+#         else:
+#             print("Return prompt")
+#     else:
+#         print("Error")

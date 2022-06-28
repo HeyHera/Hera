@@ -1,3 +1,4 @@
+import multiprocessing
 import subprocess
 import threading
 import kivy
@@ -55,6 +56,7 @@ class KivyMDLayout(MDScreen):
         threading.Thread(target=self.running_script).start()
 
     def running_script(self):
+        pipe_begin, pipe_end = multiprocessing.Pipe()
 
         # CALLING AUTOMATIC-SPEECH-RECOGNITION TO RECOGNIZE COMMAND
         try:
@@ -88,6 +90,7 @@ class KivyMDLayout(MDScreen):
         # MATCHING THE INTENT WITH CORRESPONDING SKILL
         statement = spoken.lower()
         skill_response = None
+        pipe_output = None
         print("\n{} Skill match starting {}".format(
             '='*20, '='*20))
         # POSSIBLE LABELS {'LAUNCH_APPLICATION', 'MUSIC_PLAYBACK_RANDOM_SONG','MUSIC_PLAYBACK_ALBUM_SONG', 'UNDEFINED'} etc
@@ -97,16 +100,37 @@ class KivyMDLayout(MDScreen):
             # AUDIBLE FALLBACK SOUND
             subprocess.call(["mpg321", 'assets/audible-feedback/Assistant-Module_Assets_fallback.mp3'], stdout=subprocess.DEVNULL,
                             stderr=subprocess.STDOUT)
-        
+
         elif matched_intent in ['MUSIC_PLAYBACK_ALBUM_SONG', 'MUSIC_PLAYBACK_SPECIFIC_SONG', 'MUSIC_PLAYBACK_RANDOM_SONG']:
             print("Matched Skill: {}".format(matched_intent))
-            skill_response = music_playback_skill.music_playback(
-                statement, matched_intent)
-
+            status = multiprocessing.Value('i', -1)
+            p1 = multiprocessing.Process(target=music_playback_skill.music_playback, args=(
+                status, pipe_end, statement, matched_intent,))
+            p1.start()
+            pipe_output = pipe_begin.recv()
+            pipe_begin.close()
+            if str(pipe_output) != None:
+                self.label_text = str(pipe_output).capitalize()
+                # SCHEDULE THE GUI UPDATE BACK ON THE MAIN THREAD
+                Clock.schedule_once(self.update_label)
+                time.sleep(0.5)
+            p1.join()
+            skill_response = status.value
         elif matched_intent == 'LAUNCH_APPLICATION':
             print("Matched Skill: {}".format(matched_intent))
-            skill_response = launch_application_skill.launch_applications(
-                statement)
+            status = multiprocessing.Value('i', -1)
+            p1 = multiprocessing.Process(
+                target=launch_application_skill.launch_applications, args=(status, pipe_end, statement,))
+            p1.start()
+            pipe_output = pipe_begin.recv()
+            pipe_begin.close()
+            if str(pipe_output) != None:
+                self.label_text = str(pipe_output).capitalize()
+                # SCHEDULE THE GUI UPDATE BACK ON THE MAIN THREAD
+                Clock.schedule_once(self.update_label)
+                time.sleep(0.5)
+            p1.join()
+            skill_response = status.value
         print("Skill response: {}" .format(skill_response))
         if skill_response == 0:
             print("Success")
@@ -114,7 +138,9 @@ class KivyMDLayout(MDScreen):
             print("Fail")
         elif skill_response == 2:
             print("Return prompt")
-        elif skill_response != None:
+        elif skill_response != None or "NO_MATCH" in matched_intent:
+            subprocess.call(["mpg321", 'assets/audible-feedback/Assistant-Module_Assets_fallback.mp3'], stdout=subprocess.DEVNULL,
+                            stderr=subprocess.STDOUT)
             tts_module.tts("Sorry! I did't understood that.")
 
         time.sleep(2)
@@ -125,6 +151,7 @@ class KivyMDLayout(MDScreen):
 
     def clear_label(self, dt):
         self.status.text = "Hello!"
+
 
 class Hera(MDApp):
     def build(self):
