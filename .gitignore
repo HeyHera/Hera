@@ -4,11 +4,11 @@ env/
 automatic_speech_recognition/vosk-api/*
 automatic_speech_recognition/vosk-models/*
 
-wake_word_detection/recordings/
-wake_word_detection/repository/audio_data/
-wake_word_detection/repository/audio-backup/
-wake_word_detection/repository/background_sound/
-wake_word_detection/repository/final_audio_data_csv/
+# wake_word_detection/recordings/
+# wake_word_detection/repository/audio_data/
+# wake_word_detection/repository/audio-backup/
+# wake_word_detection/repository/background_sound/
+# wake_word_detection/repository/final_audio_data_csv/
 
 nlu/entity_extraction/output/*/
 
