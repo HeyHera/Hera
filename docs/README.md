@@ -31,14 +31,13 @@ The secondary phase deals with mapping intents into corresponding skills and pro
 - [spaCy](https://spacy.io/)
 - [Nix-TTS](https://github.com/rendchevi/nix-tts)
 
-## Installation and running
-### Hera is written in python, so you need to have python installed
-Check it by
+## Installation
+Python 3.7 is needed for dependencies. Check the python version by running
 ```
 python --version
 ```
-We recommend installing Hera on seperate virtual environment
 ### Setting up virtual environment
+We recommend installing Hera on seperate virtual environment
 ```
 sudo apt install python3-venv
 ```
@@ -60,7 +59,7 @@ Models for wake word detection and intent classification is given in the reposit
 - [Entity Extraction Model](https://mega.nz/file/jGwTWI5B#mrScKEtAXwZcIapAFOTQ5EOhaStPi_g83paOxOP_RVQ) Unzip and place it (all folders) inside Hera/nlu/entity_extraction/output/
 - [nix-TTS model](https://drive.google.com/drive/folders/1jNr8i2thYDoGxZv-G_o9mHWjNxnaHVhK) Download and place it inside Hera/tts/nix/models/
 
-### Running Hera
+## Running Hera
 ```
 python app.py
 ```
