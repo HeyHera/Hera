@@ -31,9 +31,8 @@ The secondary phase deals with mapping intents into corresponding skills and pro
 - [spaCy](https://spacy.io/)
 - [Nix-TTS](https://github.com/rendchevi/nix-tts)
 
-
-## Installation
-### Hera is written in python,so you need to have it installed
+## Installation and running
+### Hera is written in python, so you need to have python installed
 Check it by
 ```
 python --version
@@ -50,17 +49,16 @@ python3 -m venv env
 ```
 git clone https://github.com/HeyHera/Hera.git
 ```
-### 
 ### Installing dependencies
 ```
 pip install -r requitements.txt
 ```
 
-### Before running Hera, test your microphone 
-```
-arecord -f cd -d 10 --device="hw:0,0" /tmp/test-mic.wav
-aplay /tmp/test-mic.wav
-```
+## Download necessary models
+Models for wake word detection and intent classification is given in the repository itself. Other models needs to be downloaded and placed in the right directory. 
+- [vosk model for Automatic Speech Recognition](https://alphacephei.com/vosk/models) Download a model of your choice and move it to Hera/vosk-models/ specify the model path in Hera/automatic_speech_recognition_script.py
+- [Entity Extraction Model](https://mega.nz/file/jGwTWI5B#mrScKEtAXwZcIapAFOTQ5EOhaStPi_g83paOxOP_RVQ) Unzip and place it (all folders) inside Hera/nlu/entity_extraction/output/
+- [nix-TTS model](https://drive.google.com/drive/folders/1jNr8i2thYDoGxZv-G_o9mHWjNxnaHVhK) Download and place it inside Hera/tts/nix/models/
 
 ### Running Hera
 ```
@@ -75,3 +73,10 @@ python app.py
 - [Gokul Manohar](https://github.com/gokulmanohar)
 - [Jithin James](https://github.com/jithinjames017)
 - [Nandu Chandran](https://github.com/Nandu-Chandran)
+
+## Troubleshoot
+### Before running Hera, test your microphone 
+```
+arecord -f cd -d 10 --device="hw:0,0" /tmp/test-mic.wav
+aplay /tmp/test-mic.wav
+```
