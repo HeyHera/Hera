@@ -26,10 +26,10 @@ The secondary phase deals with mapping intents into corresponding skills and pro
 [Read more](https://github.com/HeyHera/Hera/blob/master/docs/Hera___An_Operating_System_Level_Voice_Recognition_Package__CS492_Project_Report_%20(Main).pdf)
 
 ## Our project was made possible using
-### [Vosk](https://alphacephei.com/vosk/)
-### [SGDClassifier]()
-### [spaCy](https://spacy.io/)
-### [Nix-TTS](https://github.com/rendchevi/nix-tts)
+- [Vosk](https://alphacephei.com/vosk/)
+- [SGDClassifier]()
+- [spaCy](https://spacy.io/)
+- [Nix-TTS](https://github.com/rendchevi/nix-tts)
 
 
 ## Installation
