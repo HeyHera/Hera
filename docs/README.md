@@ -54,7 +54,7 @@ git clone https://github.com/HeyHera/Hera.git
 pip install -r requitements.txt
 ```
 
-## Download necessary models
+### Download necessary models
 Models for wake word detection and intent classification is given in the repository itself. Other models needs to be downloaded and placed in the right directory. 
 - [vosk model for Automatic Speech Recognition](https://alphacephei.com/vosk/models) Download a model of your choice and move it to Hera/vosk-models/ specify the model path in Hera/automatic_speech_recognition_script.py
 - [Entity Extraction Model](https://mega.nz/file/jGwTWI5B#mrScKEtAXwZcIapAFOTQ5EOhaStPi_g83paOxOP_RVQ) Unzip and place it (all folders) inside Hera/nlu/entity_extraction/output/
