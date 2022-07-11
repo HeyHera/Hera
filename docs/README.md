@@ -11,7 +11,7 @@ Though we are developing a voice based system, the traditional physical input is
 - [X] Custom wake word detection
 - [X] Natural Language Understanding
 - [X] Ability to launch applicatons
-- [X] Launch custom Scripts
+- [X] Launch custom scripts
 - [X] Play music and movies from the folder specified
  
 ## Features to be added
@@ -23,14 +23,18 @@ These modules determine how the voice data is collected, processed and evaluated
 Assistant-Coordinator (Primary) phase and Coordinator-Skill-Synthesis (Secondary) phase.
 The primary phase consist of transcribing the voice data to the corresponding intents.
 The secondary phase deals with mapping intents into corresponding skills and providing feedback in the form of speech or raw data.
-[Read more](https://github.com/gokulmanohar/Hera/blob/master/docs/Hera%20-%20Project%20Preliminary%20Report%20With%20Schedule.pdf)
+[Read more](https://github.com/HeyHera/Hera/blob/master/docs/Hera___An_Operating_System_Level_Voice_Recognition_Package__CS492_Project_Report_%20(Main).pdf)
 
-## Working
-[![Design-Block-Diagram.jpg](https://i.postimg.cc/8PK7BRqX/Design-Block-Diagram.jpg)](https://postimg.cc/fJdWM9WY)
+## Our project was made possible using
+### [Vosk](https://alphacephei.com/vosk/)
+### [SGDClassifier]()
+### [spaCy](https://spacy.io/)
+### [Nix-TTS](https://github.com/rendchevi/nix-tts)
+
 
 ## Installation
 ### Hera is written in python,so you need to have it installed
-Check it by: 
+Check it by
 ```
 python --version
 ```
@@ -40,9 +44,9 @@ We recommend installing Hera on seperate virtual environment
 sudo apt install python3-venv
 ```
 ```
-python3 -m venv Hera
+python3 -m venv env
 ```
-### Clone the repositry :
+### Clone the repositry
 ```
 git clone https://github.com/HeyHera/Hera.git
 ```
@@ -52,7 +56,7 @@ git clone https://github.com/HeyHera/Hera.git
 pip install -r requitements.txt
 ```
 
-### Before running Hera,test your microphone  
+### Before running Hera, test your microphone 
 ```
 arecord -f cd -d 10 --device="hw:0,0" /tmp/test-mic.wav
 aplay /tmp/test-mic.wav
@@ -60,11 +64,13 @@ aplay /tmp/test-mic.wav
 
 ### Running Hera
 ```
-python hera.py
+python app.py
 ```
 
+## Our Mentor
+- Ahammed Siraj K K
 
-### Members of the team  
+## Members of the team
 - [Arjun Vishnu Varma](https://github.com/Arjun-Varma2)
 - [Gokul Manohar](https://github.com/gokulmanohar)
 - [Jithin James](https://github.com/jithinjames017)
